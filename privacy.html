@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#070B18" />
+  <title>Privacybeleid — eTOL SmartPay</title>
+  <meta name="description" content="Privacybeleid van de eTOL SmartPay Android-app." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://etol-smartpay.nl/privacy" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css">
+  <style>
+    /* ── Mobile hamburger nav ── */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 1;
+    }
+    @media (max-width: 640px) {
+      .nav-toggle { display: flex; align-items: center; justify-content: center; }
+      .nav {
+        position: absolute;
+        top: var(--headerH);
+        right: 16px;
+        flex-direction: column;
+        background: rgba(12,18,32,0.96);
+        backdrop-filter: blur(16px);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 12px;
+        gap: 6px;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px);
+        transition: opacity 0.2s, transform 0.2s;
+        mask-image: none;
+        -webkit-mask-image: none;
+        z-index: 999;
+        overflow: visible;
+      }
+      .nav.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+      .nav .chip { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header>
+    <div class="wrap topbar">
+      <div class="brand">
+        <img src="etol-icon.png" class="brandIcon" alt="eTOL SmartPay logo">
+
+        <div class="brandText">
+          <div class="brandName">eTOL SmartPay</div>
+        </div>
+      </div>
+
+      <button class="nav-toggle" aria-label="Menu openen" id="navToggle">
+        <i class="ti ti-menu-2"></i>
+      </button>
+      <nav class="nav" id="mainNav">
+        <a class="chip" href="/">Home</a>
+        <a class="chip" href="/#how">Hoe werkt het</a>
+        <a class="chip" href="/#idea">Over de app</a>
+        <a class="chip" href="/#screenshots">Screenshots</a>
+        <a class="chip" href="/#faq">FAQ</a>
+        <a class="chip" href="/privacy">Privacybeleid</a>
+        <a class="chip" href="/#download">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Volledige breedte header-banner -->
+    <div class="hero-banner-wrap">
+      <img
+        src="screenshots/SmartPay_header.png"
+        alt="eTOL SmartPay — A24 Tolbuddy"
+        class="hero-banner-img"
+        loading="eager"
+        decoding="async"
+        width="1500"
+        height="auto"
+      >
+    </div>
+
+    <section style="max-width:760px;margin:60px auto;color:rgba(255,255,255,.88);line-height:1.75;">
+
+      <h1 style="font-size:2rem;margin-bottom:.4em;">Privacybeleid</h1>
+      <p style="color:rgba(255,255,255,.55);margin-bottom:2.5em;">Laatst bijgewerkt: 26 mei 2026</p>
+
+    <h2>1. Wie zijn wij?</h2>
+    <p>eTOL SmartPay is een gratis Android-app waarmee gebruikers tol kunnen betalen op de A24 Blankenburgverbinding via het officiële e-TOL betaalsysteem. De app is ontwikkeld als persoonlijk hulpmiddel en wordt aangeboden zonder winstoogmerk.</p>
+
+    <h2>2. Welke gegevens verwerken wij?</h2>
+    <p>De app verwerkt de volgende gegevens <strong>uitsluitend lokaal op uw apparaat</strong>:</p>
+    <ul>
+      <li><strong>Kenteken</strong> — voor het opzoeken van voertuiggegevens via de openbare RDW-API en het eTOL-voertuigregister.</li>
+      <li><strong>E-mailadres</strong> — wordt meegestuurd bij de betaalaanvraag naar e-TOL voor de betalingsbevestiging.</li>
+      <li><strong>Bankkeuze (BIC)</strong> — voor het starten van de iDEAL-betaling.</li>
+      <li><strong>GPS-locatie</strong> — wordt continu gebruikt op de achtergrond om automatisch te detecteren wanneer u de A24-tolpoort passeert. Locatiedata wordt <strong>niet opgeslagen en niet gedeeld</strong> met derden.</li>
+      <li><strong>Betaalgeschiedenis</strong> — betalingskenmerk, datum en bedrag, opgeslagen in een lokale database op uw apparaat.</li>
+    </ul>
+    <p>Wij slaan <strong>geen</strong> gegevens op op externe servers. Er is geen account, geen login en geen cloud-opslag.</p>
+
+    <h2>3. Waarvoor gebruiken wij uw locatie?</h2>
+    <p>De app vraagt toegang tot uw locatie, ook op de achtergrond (<code>ACCESS_BACKGROUND_LOCATION</code>). Dit is uitsluitend nodig om te detecteren of u de A24-tolpoort passeert terwijl u rijdt — op dat moment heeft u uw telefoon niet in de hand. De locatie wordt alleen vergeleken met de coördinaten van de tolpoort en wordt <strong>niet opgeslagen of verzonden</strong>.</p>
+
+    <h2>4. Delen wij gegevens met derden?</h2>
+    <p>De app communiceert met de volgende externe diensten:</p>
+    <ul>
+      <li><strong>e-TOL (betalentolpassage.e-tol.nl)</strong> — voor het opzoeken van het voertuigtype en het uitvoeren van de betaling. Dit is de officiële tolbeheerder van de A24.</li>
+      <li><strong>RDW Open Data (opendata.rdw.nl)</strong> — voor het ophalen van merk en model op basis van het kenteken. Dit is een openbare overheids-API.</li>
+      <li><strong>iDEAL / uw bank</strong> — de betaling verloopt via uw eigen bank. Wij ontvangen alleen een betalingskenmerk terug.</li>
+      <li><strong>Sentry (sentry.io)</strong> — voor anonieme foutrapportage bij crashes. Er worden geen persoonsgegevens meegestuurd.</li>
+    </ul>
+    <p>Wij verkopen geen gegevens aan derden.</p>
+
+    <h2>5. Beveiliging</h2>
+    <p>Alle gegevens worden lokaal opgeslagen op uw apparaat. De communicatie met externe diensten verloopt uitsluitend via HTTPS. Het kenteken, e-mailadres en bankkeuze worden opgeslagen in de beveiligde app-opslag van Android (SharedPreferences / SQLite), niet toegankelijk voor andere apps.</p>
+
+    <h2>6. Gegevens verwijderen</h2>
+    <p>U kunt alle opgeslagen gegevens verwijderen door de app te verwijderen van uw apparaat. Er zijn geen gegevens op externe servers die verwijderd moeten worden.</p>
+
+    <h2>7. Kinderen</h2>
+    <p>De app is bedoeld voor automobilisten van 18 jaar en ouder. Wij verzamelen bewust geen gegevens van kinderen.</p>
+
+    <h2>8. Wijzigingen</h2>
+    <p>Dit privacybeleid kan worden bijgewerkt bij nieuwe versies van de app. De meest recente versie is altijd beschikbaar op <a href="https://etol-smartpay.nl/privacy" style="color:#3B82F6;">etol-smartpay.nl/privacy</a>.</p>
+
+    <h2>9. Contact</h2>
+    <p>Vragen over dit privacybeleid? Neem contact op via de informatie op <a href="https://etol-smartpay.nl" style="color:#3B82F6;">etol-smartpay.nl</a>.</p>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="fineprint">
+      <div><strong>Disclaimer</strong></div>
+      <div>
+        Deze applicatie is een <strong>onofficiële Android-app</strong> en staat los van de officiële e‑TOL organisatie.
+        Gebruik is volledig op eigen risico. De ontwikkelaar is niet aansprakelijk voor foutieve invoer, gemiste betalingen/boetes,
+        of storingen in e‑TOL of betaalomgevingen.
+      </div>
+      <div>
+        <strong>Privacy</strong>: Kentekens en e‑mail worden alleen lokaal op het apparaat opgeslagen. Er is geen externe database/server en er worden geen betaalgegevens opgeslagen.
+      </div>
+      <div style="margin-top:0.5rem;opacity:0.45;font-size:0.72em;">© 2026 eTOL SmartPay</div>
+      <div class="footerLinks">
+        <a href="#" data-url="https://github.com/Jochem2025/eTOL-SmartPay/releases/latest/download/app-release.apk">Download</a>
+        <span>•</span>
+        <a href="/privacy">Privacybeleid</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Mobile hamburger nav toggle ────────────────────────────────────────────────
+    (function initNavToggle() {
+      var toggle = document.getElementById('navToggle');
+      var nav = document.getElementById('mainNav');
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        nav.classList.toggle('open');
+        var isOpen = nav.classList.contains('open');
+        toggle.setAttribute('aria-expanded', isOpen);
+        toggle.innerHTML = isOpen
+          ? '<i class="ti ti-x"></i>'
+          : '<i class="ti ti-menu-2"></i>';
+      });
+
+      // Close nav when clicking a link
+      nav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          nav.classList.remove('open');
+          toggle.innerHTML = '<i class="ti ti-menu-2"></i>';
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // Close nav on outside click
+      document.addEventListener('click', function(e) {
+        if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+          nav.classList.remove('open');
+          toggle.innerHTML = '<i class="ti ti-menu-2"></i>';
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>

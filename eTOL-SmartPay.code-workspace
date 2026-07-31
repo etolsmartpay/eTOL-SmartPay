@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "../../Project-Solution"
+		},
+		{
+			"name": "eTOL-SmartPay",
+			"path": "."
+		}
+	],
+	"settings": {
+		"chat.tools.terminal.autoApprove": {
+			"Out-File": true,
+			"Get-Item": true,
+			"Test-Path": true
+		}
+	}
+}

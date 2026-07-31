@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#070B18" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>eTOL SmartPay — A24 tol betaalapp voor Android</title>
+  <meta name="description" content="Betaal tol op de A24 met eTOL SmartPay — gratis app voor Android. Snel, veilig, offline. GPS-herinnering, iDEAL, geen account. Download nu!" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://etol-smartpay.nl/" />
+  <link rel="icon" href="etol-icon.png" type="image/png" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://etol-smartpay.nl/" />
+  <meta property="og:title"       content="eTOL SmartPay — A24 tol betaalapp voor Android" />
+  <meta property="og:description" content="Gratis Android-app voor snelle A24-tolbetalingen. GPS-herinnering, RDW-verificatie, iDEAL. Geen account, alles lokaal." />
+  <meta property="og:image"       content="https://etol-smartpay.nl/screenshots/SmartPay_1.jpg" />
+  <meta property="og:locale"      content="nl_NL" />
+  <meta property="og:site_name"   content="eTOL SmartPay" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="eTOL SmartPay — A24 tol betaalapp voor Android" />
+  <meta name="twitter:description" content="Gratis Android-app voor snelle A24-tolbetalingen. GPS-herinnering, RDW-verificatie, iDEAL." />
+  <meta name="twitter:image"       content="https://etol-smartpay.nl/screenshots/SmartPay_1.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css">
+  <style>
+    /* ── Hero redesign ──────────────────────────────────────────── */
+    .heroLeft h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+    .heroLeft h1 em { font-style: italic; color: var(--accent2); }
+    .hero-subtitle {
+      font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+      color: var(--muted, #94a3b8);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+    .hero-subtitle strong { color: rgba(255,255,255,0.92); font-weight: 600; }
+
+    /* ── Mobile hamburger nav ── */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 1;
+    }
+    @media (max-width: 640px) {
+      .nav-toggle { display: flex; align-items: center; justify-content: center; }
+      .nav {
+        position: absolute;
+        top: var(--headerH);
+        right: 16px;
+        flex-direction: column;
+        background: rgba(12,18,32,0.96);
+        backdrop-filter: blur(16px);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 12px;
+        gap: 6px;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-8px);
+        transition: opacity 0.2s, transform 0.2s;
+        mask-image: none;
+        -webkit-mask-image: none;
+        z-index: 999;
+        overflow: visible;
+      }
+      .nav.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+      .nav .chip { width: 100%; justify-content: center; }
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Install guide ── */
+    .install-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 860px) { .install-steps { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .install-steps { grid-template-columns: 1fr; } }
+    .install-step {
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.04));
+      padding: 18px;
+      text-align: center;
+    }
+    .install-step-num {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      display: inline-grid;
+      place-items: center;
+      margin-bottom: 10px;
+    }
+    .install-step h3 {
+      font-size: 14px;
+      margin: 0 0 6px;
+      color: rgba(255,255,255,0.9);
+    }
+    .install-step p {
+      margin: 0;
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .privacy-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 12px 14px;
+      font-size: 0.82rem;
+      color: var(--muted, #94a3b8);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+    .privacy-note i { font-size: 16px; color: var(--muted, #94a3b8); flex-shrink: 0; margin-top: 1px; }
+    .privacy-points {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px 20px;
+    }
+    .privacy-points span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      line-height: 1.35;
+    }
+    .privacy-points .pp-plus { color: #3b82f6; font-size: 14px; flex-shrink: 0; }
+    .privacy-points .pp-check { color: #22c55e; font-size: 14px; flex-shrink: 0; }
+    .heroRight { display: flex; flex-direction: column; justify-content: center; }
+    .feature-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.07);
+      overflow: hidden;
+    }
+    .feature-row {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 10px;
+      align-items: start;
+      background: var(--bg1, #0d1320);
+      padding: 13px 16px;
+      transition: background 0.15s;
+    }
+    .feature-row:hover { background: rgba(255,255,255,0.04); }
+    .feature-icon { font-size: 16px; color: var(--muted, #94a3b8); padding-top: 2px; }
+    .feature-text { font-size: 0.875rem; line-height: 1.4; font-weight: 500; }
+    .feature-sub { font-size: 0.78rem; color: var(--muted, #94a3b8); font-weight: 400; margin-top: 2px; }
+    .feature-group-label {
+      padding: 8px 16px 7px;
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.025);
+      color: var(--gl-color, #94a3b8);
+      border-left: 3px solid var(--gl-color, #94a3b8);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .feature-group-label i { font-size: 13px; }
+    .beta-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      background: #fef9c3;
+      color: #854d0e;
+      border-radius: 4px;
+      padding: 1px 6px;
+      vertical-align: middle;
+      margin-left: 6px;
+    }
+
+    /* ── Feature accordion ── */
+    .feature-accordion-toggle {
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s;
+      position: relative;
+    }
+    .feature-accordion-toggle:hover {
+      background: rgba(255,255,255,0.04);
+    }
+    .feature-chevron {
+      margin-left: auto;
+      font-size: 14px;
+      transition: transform 0.3s ease;
+    }
+    .feature-accordion-toggle.active .feature-chevron {
+      transform: rotate(180deg);
+    }
+    .feature-accordion-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .feature-accordion-panel.active {
+      max-height: 600px;
+    }
+
+    /* ── Carousel ── */
+    .carousel-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: 0 auto;
+      padding: 0 8px;
+    }
+    .carousel-track-wrapper {
+      overflow: hidden;
+      border-radius: 24px;
+      border: 2px solid rgba(255,255,255,0.12);
+      background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(0,0,0,0.2));
+      box-shadow:
+        0 20px 50px rgba(0,0,0,.35),
+        0 0 0 1px rgba(255,255,255,0.05),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+      width: 300px;
+      height: 540px;
+      flex-shrink: 0;
+      /* iOS Safari: force correct overflow:hidden clipping on border-radius when children use transform */
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+      isolation: isolate;
+    }
+    .carousel-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+    .carousel-slide {
+      width: 100%;
+      min-width: 100%;
+      flex: 0 0 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .carousel-btn {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      cursor: pointer;
+      transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .carousel-btn:hover {
+      background: rgba(255,255,255,0.14);
+      transform: scale(1.1);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+    .carousel-btn:active {
+      transform: scale(0.93);
+    }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.25s, width 0.25s;
+    }
+    .carousel-dot.active {
+      background: var(--accent);
+      width: 24px;
+      border-radius: 4px;
+      transform: none;
+    }
+    .carousel-dot:hover:not(.active) {
+      background: rgba(255,255,255,0.4);
+    }
+    @media (max-width: 860px) {
+      .carousel-track-wrapper { width: 260px; height: 470px; border-radius: 20px; }
+    }
+    @media (max-width: 480px) {
+      .carousel-container { gap: 10px; padding: 0 4px; }
+      .carousel-track-wrapper { width: 220px; height: 400px; border-radius: 18px; }
+      .carousel-btn { width: 36px; height: 36px; font-size: 16px; }
+    }
+    @media (max-width: 360px) {
+      .carousel-track-wrapper { width: 190px; height: 345px; border-radius: 16px; }
+      .carousel-btn { width: 32px; height: 32px; font-size: 14px; }
+    }
+
+    /* ── Links & Tables ── */
+    /* Link colors restricted to content areas */
+    .why-section a {
+      text-decoration: none;
+      color: #464feb;
+    }
+    tr th, tr td {
+      border: 1px solid #e6e6e6;
+    }
+    tr th {
+      background-color: #f5f5f5;
+    }
+
+    /* ── Why section ── */
+    .why-section {
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      padding: 32px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .why-section .sectionTitle {
+      margin-bottom: 24px;
+    }
+    .why-section h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 1.5rem 0 0.75rem 0;
+      color: rgba(255,255,255,0.95);
+    }
+    .why-section p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--muted, #94a3b8);
+      margin: 0 0 1rem 0;
+    }
+    .why-section ul {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+    .why-section li {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--muted, #94a3b8);
+      margin-bottom: 0.5rem;
+    }
+    @media (max-width: 640px) {
+      .why-section {
+        padding: 24px;
+      }
+    }
+
+    /* ── Idea section ── */
+    .idea-section {
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      padding: 32px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .idea-section .sectionTitle {
+      margin-bottom: 24px;
+    }
+    .idea-section h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 1.5rem 0 0.75rem 0;
+      color: rgba(255,255,255,0.95);
+    }
+    .idea-section p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--muted, #94a3b8);
+      margin: 0 0 1rem 0;
+    }
+    .idea-section ul {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+    .idea-section li {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--muted, #94a3b8);
+      margin-bottom: 0.5rem;
+    }
+    @media (max-width: 640px) {
+      .idea-section {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header>
+    <div class="wrap topbar">
+      <div class="brand">
+        <img src="etol-icon.png" class="brandIcon" alt="eTOL SmartPay logo">
+
+        <div class="brandText">
+          <div class="brandName">eTOL SmartPay</div>
+        </div>
+      </div>
+
+      <button class="nav-toggle" aria-label="Menu openen" id="navToggle">
+        <i class="ti ti-menu-2"></i>
+      </button>
+      <nav class="nav" id="mainNav">
+        <a class="chip" href="#how">Hoe werkt het</a>
+        <a class="chip" href="#idea">Over de app</a>
+        <a class="chip" href="#screenshots">Screenshots</a>
+        <a class="chip" href="#faq">FAQ</a>
+        <a class="chip" href="/privacy">Privacybeleid</a>
+        <a class="chip" href="#download">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero">
+
+      <!-- Volledige breedte header-banner -->
+      <div class="hero-banner-wrap">
+        <img
+          src="screenshots/SmartPay_header.png"
+          alt="eTOL SmartPay — A24 Tolbuddy"
+          class="hero-banner-img"
+          loading="eager"
+          decoding="async"
+          width="1500"
+          height="auto"
+        >
+      </div>
+
+      <div class="heroLeft">
+        <h1>Tol betalen voor de A24 — makkelijk met eTOL SmartPay</h1>
+        <p class="hero-subtitle">
+          <strong>Betaal in seconden via iDEAL</strong> — de gratis app die ervoor zorgt dat je nooit meer <strong>A24 tol</strong> vergeet te betalen.
+        </p>
+
+        <div class="privacy-note">
+          <i class="ti ti-shield-lock"></i>
+          <div class="privacy-points">
+            <span><i class="ti ti-bolt pp-plus"></i> iDEAL betaling in seconden</span>
+            <span><i class="ti ti-check pp-check"></i> Geen account vereist</span>
+            <span><i class="ti ti-satellite pp-plus"></i> GPS melding bij passage A24</span>
+            <span><i class="ti ti-check pp-check"></i> Geen tracking</span>
+            <span><i class="ti ti-device-mobile pp-plus"></i> Alles lokaal op je telefoon</span>
+            <span><i class="ti ti-check pp-check"></i> Geen advertenties</span>
+            <span><i class="ti ti-lock-open-off pp-check"></i> Geen verplichte bankkoppelingen</span>
+            <span><i class="ti ti-check pp-check"></i> 100% gratis</span>
+          </div>
+        </div>
+
+        <div class="ctaRow" id="download">
+          <a class="btn btnPrimary" id="dlBtn" href="#"
+             data-url="https://github.com/Jochem2025/eTOL-SmartPay/releases/latest/download/app-release.apk"
+             role="button">
+            <!-- Android robot logo -->
+            <svg class="dlIcon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5S11 23.33 11 22.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84 1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48A6.93 6.93 0 0 0 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/>
+            </svg>
+            <span style="display:flex;flex-direction:column;align-items:flex-start;line-height:1.2;">
+              <span style="font-size:0.7em;opacity:0.8;font-weight:400;">Gratis downloaden voor</span>
+              <span style="font-weight:700;letter-spacing:0.01em;">Android</span>
+            </span>
+            <small id="dlVersion" style="margin-left:auto;opacity:0.7;font-size:0.7em;">nieuwste versie</small>
+          </a>
+
+          <a class="btn" href="#screenshots">Bekijk screenshots</a>
+        </div>
+
+        <p class="note">
+          Beschikbaar voor Android 8.0 en hoger. iOS volgt later.
+        </p>
+
+        <img
+          src="screenshots/SmartPay_Functies.png"
+          alt="eTOL SmartPay functies overzicht"
+          style="width:100%; height:auto; display:block; margin-top:1.25rem; border-radius:12px; border:1px solid rgba(255,255,255,.08); box-shadow:0 16px 40px rgba(0,0,0,.40);"
+          loading="lazy"
+          decoding="async"
+        >
+      </div>
+
+      <!-- FEATURE PANEL (interactive accordion) -->
+      <div class="heroRight">
+        <h2>Functionaliteiten</h2>
+        <div class="feature-grid">
+
+          <!-- ── Snel Betalen ── -->
+          <div class="feature-group-label feature-accordion-toggle active" style="--gl-color:#3b82f6" data-target="fg-betalen">
+            <i class="ti ti-credit-card"></i>Snel Betalen
+            <i class="ti ti-chevron-down feature-chevron"></i>
+          </div>
+          <div class="feature-accordion-panel active" id="fg-betalen">
+            <div class="feature-row">
+              <i class="ti ti-bolt feature-icon"></i>
+              <div>
+                <div class="feature-text">Betaal in seconden via iDEAL</div>
+                <div class="feature-sub">Eén tik op de knop — je bankapp opent direct met het juiste bedrag</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <i class="ti ti-id-badge feature-icon"></i>
+              <div>
+                <div class="feature-text">Automatisch ingevulde gegevens</div>
+                <div class="feature-sub">Kenteken, e-mailadres en bankkeuze worden onthouden</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <i class="ti ti-car feature-icon"></i>
+              <div>
+                <div class="feature-text">Meerdere voertuigen beheren</div>
+                <div class="feature-sub">Wissel snel tussen kentekens — ideaal voor wagenparken of gezinnen</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <i class="ti ti-currency-euro feature-icon"></i>
+              <div>
+                <div class="feature-text">Automatisch tarief op basis van voertuigklasse</div>
+                <div class="feature-sub">Licht (€ 1,57) of Zwaar (€ 9,49)</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <i class="ti ti-plus-minus feature-icon"></i>
+              <div>
+                <div class="feature-text">Meerdere ritten in één betaling</div>
+                <div class="feature-sub">Stel 1 t/m 4 passages in — totaalprijs wordt direct bijgewerkt</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <i class="ti ti-building-bank feature-icon"></i>
+              <div>
+                <div class="feature-text">Betaling verloopt volledig in jouw bankapp</div>
+                <div class="feature-sub">De app opent alleen de betaallink — de transactie vindt buiten de app plaats, in jouw eigen bankapp</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Verificatie & Validatie ── -->
+          <div class="feature-group-label feature-accordion-toggle" style="--gl-color:#f59e0b" data-target="fg-verificatie">
+            <i class="ti ti-certificate"></i>Verificatie &amp; Validatie
+            <i class="ti ti-chevron-down feature-chevron"></i>
+          </div>
+          <div class="feature-accordion-panel" id="fg-verificatie">
+            <div class="feature-row">
+              <i class="ti ti-car feature-icon"></i>
+              <div>
+                <div class="feature-text">RDW kentekenverificatie</div>
+                <div class="feature-sub">Voertuig Merk, model en voertuigklasse worden opgehaald</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <i class="ti ti-mail-check feature-icon"></i>
+              <div>
+                <div class="feature-text">E-mailadres validatie</div>
+                <div class="feature-sub">Controle op geldig e-mailadres formaat</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <i class="ti ti-circle-check feature-icon"></i>
+              <div>
+                <div class="feature-text">Realtime betaalstatus</div>
+                <div class="feature-sub">Elke betaling wordt automatisch geverifieerd: gelukt, in behandeling of geannuleerd</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Overzicht & Administratie ── -->
+          <div class="feature-group-label feature-accordion-toggle" style="--gl-color:#a78bfa" data-target="fg-overzicht">
+            <i class="ti ti-chart-bar"></i>Overzicht &amp; Administratie
+            <i class="ti ti-chevron-down feature-chevron"></i>
+          </div>
+          <div class="feature-accordion-panel" id="fg-overzicht">
+            <div class="feature-row">
+              <i class="ti ti-layout-list feature-icon"></i>
+              <div>
+                <div class="feature-text">Tolrit Historie</div>
+                <div class="feature-sub">Drie tabbladen — Timeline · Betalingen · Tolpassages</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <i class="ti ti-chart-area-line feature-icon"></i>
+              <div>
+                <div class="feature-text">Kostengrafiek per maand</div>
+                <div class="feature-sub">Visueel overzicht van totale tolkosten — trends in één oogopslag</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <i class="ti ti-file-export feature-icon"></i>
+              <div>
+                <div class="feature-text">PDF- en CSV-export</div>
+                <div class="feature-sub">Genereer rapportages voor je eigen administratie of boekhouding</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── GPS & Intelligente Meldingen ── -->
+          <div class="feature-group-label feature-accordion-toggle" style="--gl-color:#22c55e" data-target="fg-gps">
+            <i class="ti ti-map-pin"></i>GPS &amp; Intelligente Meldingen
+            <i class="ti ti-chevron-down feature-chevron"></i>
+          </div>
+          <div class="feature-accordion-panel" id="fg-gps">
+            <div class="feature-row">
+              <i class="ti ti-satellite feature-icon"></i>
+              <div>
+                <div class="feature-text">A24-detectie op de achtergrond <span class="beta-badge">BETA</span></div>
+                <div class="feature-sub">Automatische pushmelding bij passeren tolpassage meetpunt A24</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <i class="ti ti-navigation feature-icon"></i>
+              <div>
+                <div class="feature-text">Rijrichting</div>
+                <div class="feature-sub">Detecteert automatisch richting Noord (Vlaardingen) of Zuid (Rozenburg)</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <i class="ti ti-bell-ringing feature-icon"></i>
+              <div>
+                <div class="feature-text">Betaalherinneringen</div>
+                <div class="feature-sub">Dagelijkse herinnering zolang een tolpassage onbetaald is (Optioneel)</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <i class="ti ti-radar feature-icon"></i>
+              <div>
+                <div class="feature-text">GPS-status indicatie</div>
+                <div class="feature-sub">App toont of detectie actief is, GPS ontbreekt, of bewaking is uitgeschakeld</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Privacy & Beveiliging ── -->
+          <div class="feature-group-label feature-accordion-toggle" style="--gl-color:#ef4444" data-target="fg-privacy">
+            <i class="ti ti-shield-lock"></i>Privacy &amp; Beveiliging
+            <i class="ti ti-chevron-down feature-chevron"></i>
+          </div>
+          <div class="feature-accordion-panel" id="fg-privacy">
+            <div class="feature-row">
+              <i class="ti ti-database-off feature-icon"></i>
+              <div>
+                <div class="feature-text">Geen externe server of database</div>
+                <div class="feature-sub">Alle gegevens blijven lokaal op het apparaat — er wordt niets verzonden</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <i class="ti ti-user-off feature-icon"></i>
+              <div>
+                <div class="feature-text">Geen account vereist</div>
+                <div class="feature-sub">Direct starten zonder registratie, wachtwoorden of persoonlijke gegevens</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <i class="ti ti-eye-off feature-icon"></i>
+              <div>
+                <div class="feature-text">Geen tracking of advertenties</div>
+                <div class="feature-sub">Geen analytics, geen cookies, geen profiling — volledig transparant</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <i class="ti ti-building-bank feature-icon"></i>
+              <div>
+                <div class="feature-text">Betaling verloopt volledig in jouw bankapp</div>
+                <div class="feature-sub">De app opent alleen de betaallink — de transactie vindt buiten de app plaats, in jouw eigen bankapp</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- HOE WERKT HET: TOL BETALEN -->
+    <section id="how" class="reveal">
+      <div class="sectionTitle">
+        <h2>Hoe betaal je tol op de A24? Stap voor stap</h2>
+      </div>
+
+      <div class="grid3" style="align-items:start;">
+
+      <div class="card" style="margin-top:14px; border-left: 3px solid #3b82f6;">
+        <h3 class="cardTitle">① Kenteken invoeren</h3>
+        <p>Voer je kenteken in — merk en model worden automatisch gecontroleerd via de RDW. Bij tol betalen voor de A24 is alles al ingevuld bij je volgende rit.</p>
+      </div>
+
+      <div class="card" style="margin-top:14px; border-left: 3px solid #22c55e;">
+        <h3 class="cardTitle">② Tol betalen via iDEAL</h3>
+        <p>Kies je bank en het aantal passages. Je bankapp opent direct met het juiste bedrag. Binnen enkele seconden is de A24 tol-betaling afgerond.</p>
+      </div>
+
+      <div class="card" style="margin-top:14px; border-left: 3px solid #a78bfa;">
+        <h3 class="cardTitle">③ Klaar — A24 tol betaald</h3>
+        <p>Schakel optioneel GPS-bewaking in. De app stuurt een pushmelding wanneer je de A24 nadert, zodat je het betalen niet meer vergeet.</p>
+      </div>
+
+      </div>
+    </section>
+
+    <!-- Het Waarom: Waarom eTOL SmartPay voor A24 Tol -->
+    <section id="idea" class="reveal idea-section">
+      <div class="sectionTitle">
+        <h2>Waarom eTOL SmartPay voor tol betalen op de A24?</h2>
+      </div>
+
+      <div>
+        <p>
+          Het idee voor eTOL SmartPay is ontstaan vanuit een simpel maar herkenbaar probleem: je vergeet de tol voor de A24 te betalen, krijgt een herinnering, en betaalt zo alsnog voor een duur tolritje.
+          Veel mensen, waaronder ikzelf, hebben dit al eens helaas meegemaakt. Het is frustrerend en vooral onnodig.
+        </p>
+
+        <p>
+          De officiële e-tol website biedt weinig gebruiksgemak voor A24 tol betalen. Eerdere gegevens worden niet opgeslagen, waardoor je telkens opnieuw begint. Daarnaast ontbreekt een systeem dat een herinnering stuurt na een tunnelpassage. Hierdoor ben je afhankelijk van je geheugen en dat zorgt er in de praktijk voor dat je sneller vergeet tol op de A24 te betalen.
+        </p>
+
+        <p>
+          Ik wil zelf de controle houden over mijn betalingen. Ik ben niet op zoek naar afhankelijkheid van externe aanbieders die dit proces voor mij automatiseren, zeker niet als zij daar extra kosten voor rekenen of toegang vragen tot mijn persoonlijke en financiële gegevens. Ik wil een oplossing die simpel, snel en transparant is — zonder gedoe, zonder verrassingen, en zonder in te leveren op mijn privacy.
+        </p>
+
+        <p>
+          Juist deze combinatie — gebrek aan gebruiksgemak én geen ondersteuning voor mensen die zelf de regie willen houden — vormde de aanleiding om eTOL SmartPay te ontwikkelen.
+        </p>
+
+        <h3>Met eTOL SmartPay kies je bewust voor eenvoud en controle bij A24 tol betalen:</h3>
+
+        <ul>
+          <li>Jij bepaalt wanneer je betaalt</li>
+          <li>Je gegevens blijven lokaal op je eigen toestel</li>
+          <li>Je wordt automatisch herinnerd na een tunnelpassage dankzij GPS-detectie</li>
+          <li>Geen accounts, geen koppelingen, geen onnodige kosten</li>
+        </ul>
+
+        <p>
+          <strong>eTOL SmartPay is gemaakt voor mensen die het simpel willen houden, zonder in te leveren op gemak of privacy</strong>
+        </p>
+      </div>
+    </section>
+
+    <!-- SCREENSHOTS CAROUSEL -->
+    <section id="screenshots" class="reveal">
+      <div class="sectionTitle">
+        <h2>eTOL SmartPay app screenshots — tol betalen in actie</h2>
+        <div class="sectionHint">Gebruik de pijlen om meer te bekijken</div>
+      </div>
+
+      <div class="carousel-container">
+        <button class="carousel-btn carousel-btn-prev" aria-label="Vorige screenshot">
+          <i class="ti ti-chevron-left"></i>
+        </button>
+
+        <div class="carousel-track-wrapper">
+          <div class="carousel-track">
+            <div class="carousel-slide active">
+              <img src="screenshots/SmartPay_Overview.jpg" alt="SmartPay hoofdscherm" loading="eager" decoding="async">
+            </div>
+            <div class="carousel-slide">
+              <img src="screenshots/SmartPay_AutoPay.jpg" alt="SmartPay automatisch betalen" loading="lazy" decoding="async">
+            </div>
+            <div class="carousel-slide">
+              <img src="screenshots/SmartPay_Sessiegeschiedenis.jpg" alt="SmartPay sessiegeschiedenis" loading="lazy" decoding="async">
+            </div>
+            <div class="carousel-slide">
+              <img src="screenshots/SmartPay_Verwerking.jpg" alt="SmartPay betaalverwerking" loading="lazy" decoding="async">
+            </div>
+            <div class="carousel-slide">
+              <img src="screenshots/SmartPay_Betaling.jpg" alt="SmartPay betaalscherm" loading="lazy" decoding="async">
+            </div>
+            <div class="carousel-slide">
+              <img src="screenshots/SmartPay_Notificatie.jpg" alt="SmartPay GPS-notificatie" loading="lazy" decoding="async">
+            </div>
+            <div class="carousel-slide">
+              <img src="screenshots/SmartPay_Settings.jpg" alt="SmartPay instellingen" loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-btn carousel-btn-next" aria-label="Volgende screenshot">
+          <i class="ti ti-chevron-right"></i>
+        </button>
+      </div>
+
+      <div class="carousel-dots"></div>
+    </section>
+
+    <!-- GOED OM TE WETEN (FAQ) -->
+    <section class="reveal" id="faq">
+      <div class="sectionTitle">
+        <h2>FAQ</h2>
+      </div>
+
+      <div class="grid3" style="align-items:start;">
+
+      <div class="card" style="margin-top:14px; border-left: 3px solid #3b82f6;">
+        <h3 class="cardTitle">❓ Wat gebeurt er als mijn GPS niet werkt?</h3>
+        <p>De app werkt perfect zonder GPS — je kan gewoon handmatig betalen. De GPS-herinnering is optioneel en werkt pas als je deze inschakelt. Geen betaling wordt ooit automatisch gedaan.</p>
+      </div>
+
+      <div class="card" style="margin-top:14px; border-left: 3px solid #22c55e;">
+        <h3 class="cardTitle">🔋 Kost GPS veel batterij?</h3>
+        <p>De GPS-bewaking is geoptimaliseerd en gebruikt geen aanzienlijke batterij. De app checkt alleen periodiek je locatie en werkt ook in de achtergrond op een efficiënte manier.</p>
+      </div>
+
+      <div class="card" style="margin-top:14px; border-left: 3px solid #a78bfa;">
+        <h3 class="cardTitle">📱 Kan ik de app op meerdere telefoons gebruiken?</h3>
+        <p>Ja, download de app op zoveel toestellen als je wilt. Alle gegevens (kentekens, betalingen, geschiedenis) zijn lokaal per apparaat opgeslagen.</p>
+      </div>
+
+      <div class="card" style="margin-top:14px; border-left: 3px solid #f59e0b;">
+        <h3 class="cardTitle">🗑️ Kan ik al mijn gegevens verwijderen?</h3>
+        <p>Ja, al je gegevens worden automatisch verwijderd als je de app van je telefoon verwijdert — er is niets wat we online moeten/kunnen verwijderen omdat we geen servers hebben.</p>
+      </div>
+
+      <div class="card" style="margin-top:14px; border-left: 3px solid #8b5cf6;">
+        <h3 class="cardTitle">🍎 Wanneer komt iOS uit?</h3>
+        <p>We werken aan een iPhone-versie, gepland voor 2026. Momenteel is de app beschikbaar voor alle Android-toestellen (8.0+).</p>
+      </div>
+
+      <div class="card" style="margin-top:14px; border-left: 3px solid #06b6d4;">
+        <h3 class="cardTitle">💳 Welke banken werken met iDEAL?</h3>
+        <p>Alle Nederlandse banken die iDEAL ondersteunen. De app laat alle beschikbare banken zien op het moment van betaling door eTOL worden ondersteund.</p>
+      </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="fineprint">
+        <div><strong>Disclaimer</strong></div>
+        <div>
+          Deze applicatie is een <strong>onofficiële Android-app</strong> en staat los van de officiële e‑TOL organisatie.
+          Gebruik is volledig op eigen risico. De ontwikkelaar is niet aansprakelijk voor foutieve invoer, gemiste betalingen/boetes,
+          of storingen in e‑TOL of betaalomgevingen.
+        </div>
+        <div>
+          <strong>Privacy</strong>: Kentekens en e‑mail worden alleen lokaal op het apparaat opgeslagen. Er is geen externe database/server en er worden geen betaalgegevens opgeslagen.
+        </div>
+        <div style="margin-top:0.5rem;opacity:0.45;font-size:0.72em;">© 2026 eTOL SmartPay</div>
+        <div class="footerLinks">
+          <a href="#" data-url="https://github.com/Jochem2025/eTOL-SmartPay/releases/latest/download/app-release.apk" id="footerDlLink">Download</a>
+          <span>•</span>
+          <a href="/privacy">Privacybeleid</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- JSON-LD: SoftwareApplication (Google Rich Result) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "eTOL SmartPay",
+    "description": "Gratis Android-app voor snelle A24-tolbetalingen via e-TOL.nl. Met GPS-herinnering bij tunnelpassage, RDW-kenteken-verificatie en directe iDEAL-betaling. Geen account nodig.",
+    "url": "https://etol-smartpay.nl/",
+    "operatingSystem": "Android 8.0+",
+    "applicationCategory": "UtilitiesApplication",
+    "inLanguage": "nl",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "screenshot": "https://etol-smartpay.nl/screenshots/SmartPay_1.jpg",
+    "keywords": "A24, tol, betalen, Maasdeltatunnel, Hollandtunnel, eTOL, e-TOL, iDEAL, GPS, Android"
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage (Google Rich Result) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Hoe betaal je tol op de A24?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Met eTOL SmartPay betaal je tol op de A24 in drie stappen: 1) Voer je kenteken in, 2) Betaal via iDEAL in enkele seconden, 3) Je bent klaar. De app herinnert je automatisch via GPS wanneer je de A24 nadert."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wat gebeurt er als mijn GPS niet werkt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "De app werkt perfect zonder GPS — je kan gewoon handmatig betalen. De GPS-herinnering is optioneel en werkt pas als je deze inschakelt. Geen betaling wordt ooit automatisch gedaan."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kan ik de app op meerdere telefoons gebruiken?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja, download eTOL SmartPay op zoveel toestellen als je wilt. Alle gegevens (kentekens, betalingen, geschiedenis) zijn lokaal per apparaat opgeslagen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Hoeveel kost tol op de A24?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "De tol voor de A24 bedraagt € 1,57 voor lichte voertuigen en € 9,49 voor zware voertuigen per passage. eTOL SmartPay berekent de juiste prijs automatisch op basis van je voertuigklasse."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is eTOL SmartPay veilig voor tol betalen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja, eTOL SmartPay is volledig veilig. Alle gegevens blijven lokaal op je telefoon. De betaling verloopt via je eigen bankapp (iDEAL). We hebben geen servers en geen toegang tot je financiële gegevens."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script>
+    /**
+     * Auto-theme from screenshot palette:
+     * - background = gemiddelde kleur van de randen (vaak app-background)
+     * - accents = meest verzadigde kleuren uit het beeld (buttons/highlights)
+     */
+    const THEME_SOURCE = "screenshots/SmartPay_header.png";
+
+    function rgbToHex(r,g,b){
+      const toHex = (n)=> n.toString(16).padStart(2,'0');
+      return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+    }
+    function rgbToHsl(r,g,b){
+      r/=255; g/=255; b/=255;
+      const max = Math.max(r,g,b), min = Math.min(r,g,b);
+      let h, s, l = (max + min) / 2;
+      if(max === min){ h = s = 0; }
+      else{
+        const d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch(max){
+          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+          case g: h = (b - r) / d + 2; break;
+          case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+      }
+      return { h, s, l };
+    }
+    function mix(a, b, t){
+      return {
+        r: Math.round(a.r + (b.r - a.r)*t),
+        g: Math.round(a.g + (b.g - a.g)*t),
+        b: Math.round(a.b + (b.b - a.b)*t),
+      };
+    }
+
+    function setTheme(bg, accent1, accent2){
+      const root = document.documentElement.style;
+
+      const bg0 = mix(bg, {r:0,g:0,b:0}, 0.18);
+      const bg1 = mix(bg, {r:255,g:255,b:255}, 0.06);
+
+      root.setProperty("--bg0", rgbToHex(bg0.r,bg0.g,bg0.b));
+      root.setProperty("--bg1", rgbToHex(bg1.r,bg1.g,bg1.b));
+      root.setProperty("--accent", rgbToHex(accent1.r,accent1.g,accent1.b));
+      root.setProperty("--accent2", rgbToHex(accent2.r,accent2.g,accent2.b));
+
+      root.setProperty("--accentGlow", `rgba(${accent1.r},${accent1.g},${accent1.b},.28)`);
+      root.setProperty("--accent2Glow", `rgba(${accent2.r},${accent2.g},${accent2.b},.22)`);
+    }
+
+    function computePalette(img){
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d", { willReadFrequently: true });
+
+      const targetW = 180;
+      const scale = targetW / img.naturalWidth;
+      const w = targetW;
+      const h = Math.max(60, Math.round(img.naturalHeight * scale));
+
+      canvas.width = w;
+      canvas.height = h;
+      ctx.drawImage(img, 0, 0, w, h);
+
+      const { data } = ctx.getImageData(0, 0, w, h);
+
+      // Background: average edges
+      const margin = Math.max(8, Math.floor(Math.min(w,h) * 0.10));
+      let sumR=0,sumG=0,sumB=0,count=0;
+
+      for(let y=0;y<h;y++){
+        for(let x=0;x<w;x++){
+          const isEdge = (x < margin || x >= w - margin || y < margin || y >= h - margin);
+          if(!isEdge) continue;
+          const i = (y*w + x)*4;
+          if(data[i+3] < 220) continue;
+          sumR += data[i];
+          sumG += data[i+1];
+          sumB += data[i+2];
+          count++;
+        }
+      }
+      const bg = count ? { r: Math.round(sumR/count), g: Math.round(sumG/count), b: Math.round(sumB/count) } : { r:5,g:11,b:26 };
+
+      // Accents: pick top saturated buckets
+      const buckets = new Map();
+      const step = 6;
+
+      for(let y=0;y<h;y+=step){
+        for(let x=0;x<w;x+=step){
+          const i = (y*w + x)*4;
+          if(data[i+3] < 230) continue;
+
+          const r = data[i], g = data[i+1], b = data[i+2];
+          const { s, l } = rgbToHsl(r,g,b);
+          if(s < 0.35) continue;
+          if(l < 0.18 || l > 0.85) continue;
+
+          const qr = Math.round(r/24)*24;
+          const qg = Math.round(g/24)*24;
+          const qb = Math.round(b/24)*24;
+          const key = `${qr},${qg},${qb}`;
+          buckets.set(key, (buckets.get(key) || 0) + 1);
+        }
+      }
+
+      let top = [...buckets.entries()].sort((a,b)=> b[1]-a[1]).slice(0, 4).map(e => e[0]);
+      if(top.length < 2) top = ["0,120,212","0,183,195"];
+
+      const pick = (k)=> {
+        const [r,g,b]=k.split(",").map(n=>parseInt(n,10));
+        return {r,g,b};
+      };
+      let accent1 = pick(top[0]);
+      let accent2 = pick(top.find(k => k !== top[0]) || top[0]);
+
+      const dist = (c1,c2)=> Math.abs(c1.r-c2.r)+Math.abs(c1.g-c2.g)+Math.abs(c1.b-c2.b);
+      if(dist(accent1, bg) < 90) accent1 = mix(accent1, {r:255,g:255,b:255}, 0.18);
+      if(dist(accent2, bg) < 90) accent2 = mix(accent2, {r:255,g:255,b:255}, 0.18);
+
+      setTheme(bg, accent1, accent2);
+    }
+
+    (function initAutoTheme(){
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+      img.src = THEME_SOURCE;
+      img.onload = () => {
+        try { computePalette(img); }
+        catch (e) { console.warn("Auto theme failed, using fallback.", e); }
+      };
+      img.onerror = () => console.warn("Theme source image not found:", THEME_SOURCE);
+    })();
+
+    // ── GitHub latest release version ──────────────────────────────────────
+    // 1. Tries the Releases API  → gives tag + APK asset download URL
+    // 2. Falls back to Tags API  → works even without a published release,
+    //    as long as a git tag (e.g. v1.0.8) has been pushed to the repo
+    (function loadLatestVersion() {
+      function applyVersion(tag, htmlUrl, asset) {
+        if (!tag) return;
+        const versionEl = document.getElementById("dlVersion");
+        if (versionEl) versionEl.textContent = tag.trim();
+
+        if (htmlUrl) {
+          const relNotesEl = document.getElementById("relNotesLink");
+          if (relNotesEl) relNotesEl.href = htmlUrl;
+        }
+        if (asset) {
+          const url = asset.browser_download_url;
+          const dlBtn = document.getElementById("dlBtn");
+          if (dlBtn) dlBtn.dataset.url = url;
+          const footerDl = document.getElementById("footerDlLink");
+          if (footerDl) footerDl.dataset.url = url;
+        }
+      }
+
+      const API = "https://api.github.com/repos/Jochem2025/eTOL-SmartPay";
+      const HEADERS = { "Accept": "application/vnd.github+json" };
+
+      // ── Step 1: Releases API ──────────────────────────────────────────────
+      fetch(API + "/releases/latest", { headers: HEADERS })
+        .then(function(r) {
+          if (!r.ok) throw new Error("no release (" + r.status + ")");
+          return r.json();
+        })
+        .then(function(data) {
+          const htmlUrl = (data.html_url || "").trim();
+          const tag = htmlUrl.split("/releases/tag/").pop() || data.tag_name || "";
+          const asset = (data.assets || []).find(function(a) {
+            return a.name.toLowerCase().endsWith(".apk");
+          });
+          applyVersion(tag, htmlUrl, asset);
+        })
+        // ── Step 2: Tags API fallback ─────────────────────────────────────
+        .catch(function() {
+          fetch(API + "/tags", { headers: HEADERS })
+            .then(function(r) { return r.json(); })
+            .then(function(tags) {
+              if (Array.isArray(tags) && tags.length > 0) {
+                applyVersion(tags[0].name, null, null);
+              }
+            })
+            .catch(function(err) {
+              console.warn("eTOL versie ophalen mislukt:", err);
+            });
+        });
+    })();
+
+    // ── Download-knoppen: URL afgeschermd via data-url ──────────────────────
+    document.addEventListener('click', function(e) {
+      const btn = e.target.closest('[data-url]');
+      if (!btn) return;
+      e.preventDefault();
+      const url = btn.dataset.url;
+      if (url) window.location.href = url;
+    });
+
+    // ── Feature accordion ───────────────────────────────────────────────────
+    (function initAccordion() {
+      const toggles = document.querySelectorAll('.feature-accordion-toggle');
+      toggles.forEach(function(toggle) {
+        toggle.addEventListener('click', function() {
+          const targetId = this.getAttribute('data-target');
+          const panel = document.getElementById(targetId);
+          const isActive = this.classList.contains('active');
+
+          // Close all panels
+          toggles.forEach(function(t) {
+            t.classList.remove('active');
+            var p = document.getElementById(t.getAttribute('data-target'));
+            if (p) p.classList.remove('active');
+          });
+
+          // Open clicked if it wasn't already open
+          if (!isActive) {
+            this.classList.add('active');
+            if (panel) panel.classList.add('active');
+          }
+        });
+      });
+    })();
+
+    // ── Screenshot carousel ─────────────────────────────────────────────────
+    (function initCarousel() {
+      const track = document.querySelector('.carousel-track');
+      const slides = document.querySelectorAll('.carousel-slide');
+      const prevBtn = document.querySelector('.carousel-btn-prev');
+      const nextBtn = document.querySelector('.carousel-btn-next');
+      const dotsContainer = document.querySelector('.carousel-dots');
+      if (!track || slides.length === 0) return;
+
+      let current = 0;
+
+      // Create dots
+      slides.forEach(function(_, i) {
+        const dot = document.createElement('span');
+        dot.classList.add('carousel-dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', function() { goTo(i); });
+        dotsContainer.appendChild(dot);
+      });
+
+      function goTo(index) {
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        current = index;
+        var translateVal = 'translateX(-' + (current * 100) + '%)';
+        track.style.transform = translateVal;
+        track.style.webkitTransform = translateVal;
+        var dots = dotsContainer.querySelectorAll('.carousel-dot');
+        dots.forEach(function(d, i) {
+          d.classList.toggle('active', i === current);
+        });
+      }
+
+      prevBtn.addEventListener('click', function() { goTo(current - 1); });
+      nextBtn.addEventListener('click', function() { goTo(current + 1); });
+
+      // Swipe support
+      var startX = 0;
+      var isDragging = false;
+      var wrapper = document.querySelector('.carousel-track-wrapper');
+
+      wrapper.addEventListener('touchstart', function(e) {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+      }, { passive: true });
+
+      wrapper.addEventListener('touchend', function(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        var diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) goTo(current + 1);
+          else goTo(current - 1);
+        }
+      }, { passive: true });
+    })();
+
+    // ── Hamburger nav toggle ────────────────────────────────────────────────
+    (function initNavToggle() {
+      var toggle = document.getElementById('navToggle');
+      var nav = document.getElementById('mainNav');
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        nav.classList.toggle('open');
+        var isOpen = nav.classList.contains('open');
+        toggle.setAttribute('aria-expanded', isOpen);
+        toggle.innerHTML = isOpen
+          ? '<i class="ti ti-x"></i>'
+          : '<i class="ti ti-menu-2"></i>';
+      });
+
+      // Close nav when clicking a link
+      nav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          nav.classList.remove('open');
+          toggle.innerHTML = '<i class="ti ti-menu-2"></i>';
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // Close nav on outside click
+      document.addEventListener('click', function(e) {
+        if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+          nav.classList.remove('open');
+          toggle.innerHTML = '<i class="ti ti-menu-2"></i>';
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+
+    // ── Scroll reveal animations ────────────────────────────────────────────
+    (function initReveal() {
+      var reveals = document.querySelectorAll('.reveal');
+      if (!reveals.length) return;
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      reveals.forEach(function(el) { observer.observe(el); });
+    })();
+  </script>
+</body>
+</html>
