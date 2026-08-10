@@ -254,6 +254,7 @@ h1 {
   align-items: center;
   line-height: 0;
   border-radius: 18px;
+  overflow: hidden;
   transition: transform .18s ease, box-shadow .18s ease;
 }
 
@@ -270,6 +271,7 @@ h1 {
   display: block;
   width: min(320px, 100%);
   height: auto;
+  border-radius: 18px;
 }
 
 .note {
