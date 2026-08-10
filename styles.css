@@ -269,31 +269,58 @@ h1 {
 }
 
 .btnPlayStore {
-  padding: 18px 30px;
-  font-size: 17px;
+  padding: 14px 24px;
+  font-size: 16px;
   font-weight: 700;
-  letter-spacing: -.1px;
-  background: #000;
-  border: 1px solid rgba(255,255,255,.18);
-  box-shadow: 0 18px 44px rgba(0,0,0,.32);
+  letter-spacing: 0;
+  background: linear-gradient(180deg, #1f1f1f 0%, #0f0f0f 100%);
+  border: 1px solid rgba(255,255,255,.28);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 14px 32px rgba(0,0,0,.35);
   color: #fff;
-  min-height: 56px;
+  min-height: 64px;
+  border-radius: 12px;
+  align-items: center;
+  gap: 12px;
 }
 .btnPlayStore:hover {
-  background: #1a1a1a;
+  background: linear-gradient(180deg, #2a2a2a 0%, #151515 100%);
   transform: translateY(-2px);
-  box-shadow: 0 22px 48px rgba(0,0,0,.4);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 20px 42px rgba(0,0,0,.42);
 }
 
 .btnPlayStore .dlIcon {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.playStoreText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.05;
+  margin-right: 2px;
+}
+
+.playStoreKicker {
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  font-weight: 700;
+  opacity: .88;
+}
+
+.playStoreTitle {
+  font-size: 26px;
+  font-weight: 500;
+  font-family: 'Instrument Serif', serif;
+  letter-spacing: -.2px;
 }
 
 .androidStoreIcon {
-  font-size: 22px;
+  font-size: 20px;
   color: #a4c639;
   line-height: 1;
+  margin-left: 2px;
 }
 
 @keyframes downloadGlow {
@@ -506,6 +533,7 @@ footer {
   h1           { letter-spacing: -.5px; }
   .btnPrimary  { width: 100%; justify-content: center; }
   .btnPlayStore { width: 100%; justify-content: center; }
+  .playStoreTitle { font-size: 23px; }
   .ctaRow      { flex-direction: column; align-items: stretch; }
   .ctaRow .btn { justify-content: center; }
   .panelShot   { height: 50px; }
@@ -522,6 +550,10 @@ footer {
   .brandIcon   { height: 40px; }
   h1           { font-size: clamp(22px, 7.5vw, 28px); }
   .btnPrimary  { font-size: 15px; padding: 13px 18px; }
-  .btnPlayStore { font-size: 15px; padding: 14px 18px; min-height: 50px; }
+  .btnPlayStore { font-size: 15px; padding: 13px 16px; min-height: 54px; }
+  .btnPlayStore .dlIcon { width: 24px; height: 24px; }
+  .playStoreKicker { font-size: 9px; letter-spacing: 1px; }
+  .playStoreTitle { font-size: 20px; }
+  .androidStoreIcon { font-size: 18px; }
   .wrap        { width: calc(100% - 24px); }
 }
