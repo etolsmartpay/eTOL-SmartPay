@@ -520,36 +520,10 @@
         </div>
 
         <div class="ctaRow" id="download">
-          <a class="btn btnPlayStore" href="https://play.google.com/store/apps/details?id=com.etol.smartpay"
-             target="_blank" rel="noopener noreferrer" role="button" aria-label="Downloaden via Google Play">
-            <!-- Officieel Google Play vierkleurig logo -->
-            <svg class="dlIcon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594z" fill="#FFBB00"/>
-              <path d="M1.337.924A1.493 1.493 0 0 0 1 1.75v20.5c0 .284.08.55.218.78l11.796-11.75L1.337.924z" fill="#00EE76"/>
-              <path d="M13.008 12.282L1.255 23.993c.14.04.284.007.43-.074l13.855-7.854-2.532-2.583z" fill="#00D3FF"/>
-              <path d="M13.008 11.718l2.534-2.521L1.685.107C1.54.026 1.39-.007 1.246.035L13.008 11.718z" fill="#FF3A44"/>
-            </svg>
-            <span class="playStoreText" aria-hidden="true">
-              <span class="playStoreKicker">GET IT ON</span>
-              <span class="playStoreTitle">Google Play</span>
-            </span>
-            <i class="ti ti-brand-android androidStoreIcon" aria-hidden="true"></i>
+          <a class="downloadBadgeLink" href="https://play.google.com/store/apps/details?id=com.etol.smartpay"
+             target="_blank" rel="noopener noreferrer" aria-label="Downloaden via Google Play">
+            <img class="downloadBadge" src="Designer.png" alt="Get it on Google Play" loading="lazy" />
           </a>
-
-          <!-- Oude APK-downloadknop uitgeschakeld
-          <a class="btn btnPrimary" id="dlBtn" href="#"
-             data-url="https://github.com/etolsmartpay/eTOL-SmartPay/releases/latest/download/app-release.apk"
-             role="button">
-            <svg class="dlIcon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5S11 23.33 11 22.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84 1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48A6.93 6.93 0 0 0 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/>
-            </svg>
-            <span style="display:flex;flex-direction:column;align-items:flex-start;line-height:1.2;">
-              <span style="font-size:0.7em;opacity:0.8;font-weight:400;">Gratis downloaden voor</span>
-              <span style="font-weight:700;letter-spacing:0.01em;">Android</span>
-            </span>
-            <small id="dlVersion" style="margin-left:auto;opacity:0.7;font-size:0.7em;">nieuwste versie</small>
-          </a>
-          -->
 
           <a class="btn" href="#screenshots">Bekijk screenshots</a>
         </div>
@@ -922,7 +896,7 @@
         </div>
         <div style="margin-top:0.5rem;opacity:0.45;font-size:0.72em;">© 2026 eTOL SmartPay</div>
         <div class="footerLinks">
-          <a href="#" data-url="https://github.com/etolsmartpay/eTOL-SmartPay/releases/latest/download/app-release.apk" id="footerDlLink">Download</a>
+          <a href="https://play.google.com/store/apps/details?id=com.etol.smartpay" target="_blank" rel="noopener noreferrer">Download</a>
           <span>•</span>
           <a href="/privacy">Privacybeleid</a>
         </div>
@@ -1135,70 +1109,6 @@
       };
       img.onerror = () => console.warn("Theme source image not found:", THEME_SOURCE);
     })();
-
-    // ── GitHub latest release version ──────────────────────────────────────
-    // 1. Tries the Releases API  → gives tag + APK asset download URL
-    // 2. Falls back to Tags API  → works even without a published release,
-    //    as long as a git tag (e.g. v1.0.8) has been pushed to the repo
-    (function loadLatestVersion() {
-      function applyVersion(tag, htmlUrl, asset) {
-        if (!tag) return;
-        const versionEl = document.getElementById("dlVersion");
-        if (versionEl) versionEl.textContent = tag.trim();
-
-        if (htmlUrl) {
-          const relNotesEl = document.getElementById("relNotesLink");
-          if (relNotesEl) relNotesEl.href = htmlUrl;
-        }
-        if (asset) {
-          const url = asset.browser_download_url;
-          const dlBtn = document.getElementById("dlBtn");
-          if (dlBtn) dlBtn.dataset.url = url;
-          const footerDl = document.getElementById("footerDlLink");
-          if (footerDl) footerDl.dataset.url = url;
-        }
-      }
-
-      const API = "https://api.github.com/repos/etolsmartpay/eTOL-SmartPay";
-      const HEADERS = { "Accept": "application/vnd.github+json" };
-
-      // ── Step 1: Releases API ──────────────────────────────────────────────
-      fetch(API + "/releases/latest", { headers: HEADERS })
-        .then(function(r) {
-          if (!r.ok) throw new Error("no release (" + r.status + ")");
-          return r.json();
-        })
-        .then(function(data) {
-          const htmlUrl = (data.html_url || "").trim();
-          const tag = htmlUrl.split("/releases/tag/").pop() || data.tag_name || "";
-          const asset = (data.assets || []).find(function(a) {
-            return a.name.toLowerCase().endsWith(".apk");
-          });
-          applyVersion(tag, htmlUrl, asset);
-        })
-        // ── Step 2: Tags API fallback ─────────────────────────────────────
-        .catch(function() {
-          fetch(API + "/tags", { headers: HEADERS })
-            .then(function(r) { return r.json(); })
-            .then(function(tags) {
-              if (Array.isArray(tags) && tags.length > 0) {
-                applyVersion(tags[0].name, null, null);
-              }
-            })
-            .catch(function(err) {
-              console.warn("eTOL versie ophalen mislukt:", err);
-            });
-        });
-    })();
-
-    // ── Download-knoppen: URL afgeschermd via data-url ──────────────────────
-    document.addEventListener('click', function(e) {
-      const btn = e.target.closest('[data-url]');
-      if (!btn) return;
-      e.preventDefault();
-      const url = btn.dataset.url;
-      if (url) window.location.href = url;
-    });
 
     // ── Feature accordion ───────────────────────────────────────────────────
     (function initAccordion() {

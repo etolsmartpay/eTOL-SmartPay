@@ -249,86 +249,28 @@ h1 {
 .btn:active { transform: scale(.97); }
 .btn small { font-size: 12px; font-weight: 500; opacity: .78; }
 
-/* Primaire downloadknop — groot, opvallend, geanimeerd */
-.btnPrimary {
-  padding: 15px 28px;
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: -.1px;
-  border: 1px solid rgba(255,255,255,.24);
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
-  box-shadow: 0 0 0 0 var(--accentGlow), 0 18px 44px rgba(0,0,0,.32);
-  animation: downloadGlow 2.6s ease-in-out infinite;
-  color: #fff;
-}
-.btnPrimary:hover {
-  filter: brightness(1.10);
-  animation: none;
-  box-shadow: 0 0 0 10px var(--accentGlow), 0 18px 44px rgba(0,0,0,.32);
-  transform: translateY(-2px);
-}
-
-.btnPlayStore {
-  padding: 14px 24px;
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0;
-  background: linear-gradient(180deg, #1f1f1f 0%, #0f0f0f 100%);
-  border: 1px solid rgba(255,255,255,.28);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 14px 32px rgba(0,0,0,.35);
-  color: #fff;
-  min-height: 64px;
-  border-radius: 12px;
+.downloadBadgeLink {
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
+  line-height: 0;
+  border-radius: 18px;
+  transition: transform .18s ease, box-shadow .18s ease;
 }
-.btnPlayStore:hover {
-  background: linear-gradient(180deg, #2a2a2a 0%, #151515 100%);
+
+.downloadBadgeLink:hover {
   transform: translateY(-2px);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.16), 0 20px 42px rgba(0,0,0,.42);
+  box-shadow: 0 18px 36px rgba(0,0,0,.28);
 }
 
-.btnPlayStore .dlIcon {
-  width: 28px;
-  height: 28px;
-  flex-shrink: 0;
+.downloadBadgeLink:active {
+  transform: scale(.98);
 }
 
-.playStoreText {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  line-height: 1.05;
-  margin-right: 2px;
+.downloadBadge {
+  display: block;
+  width: min(320px, 100%);
+  height: auto;
 }
-
-.playStoreKicker {
-  font-size: 10px;
-  letter-spacing: 1.2px;
-  font-weight: 700;
-  opacity: .88;
-}
-
-.playStoreTitle {
-  font-size: 26px;
-  font-weight: 500;
-  font-family: 'Instrument Serif', serif;
-  letter-spacing: -.2px;
-}
-
-.androidStoreIcon {
-  font-size: 20px;
-  color: #a4c639;
-  line-height: 1;
-  margin-left: 2px;
-}
-
-@keyframes downloadGlow {
-  0%,100% { box-shadow: 0 0 0 0   var(--accentGlow), 0 18px 44px rgba(0,0,0,.32); }
-  50%      { box-shadow: 0 0 0 11px transparent,      0 18px 44px rgba(0,0,0,.32); }
-}
-
-.dlIcon { width: 18px; height: 18px; flex-shrink: 0; }
 
 .note {
   margin: 14px 0 0;
@@ -531,10 +473,9 @@ footer {
   .brandIcon   { height: 44px; }
   .chip        { padding: 6px 11px; font-size: 12px; }
   h1           { letter-spacing: -.5px; }
-  .btnPrimary  { width: 100%; justify-content: center; }
-  .btnPlayStore { width: 100%; justify-content: center; }
-  .playStoreTitle { font-size: 23px; }
   .ctaRow      { flex-direction: column; align-items: stretch; }
+  .downloadBadgeLink { width: 100%; justify-content: center; }
+  .downloadBadge { width: min(100%, 320px); }
   .ctaRow .btn { justify-content: center; }
   .panelShot   { height: 50px; }
   .panelLogo   { height: 190px; }
@@ -549,11 +490,5 @@ footer {
   .brandSub    { display: none; }
   .brandIcon   { height: 40px; }
   h1           { font-size: clamp(22px, 7.5vw, 28px); }
-  .btnPrimary  { font-size: 15px; padding: 13px 18px; }
-  .btnPlayStore { font-size: 15px; padding: 13px 16px; min-height: 54px; }
-  .btnPlayStore .dlIcon { width: 24px; height: 24px; }
-  .playStoreKicker { font-size: 9px; letter-spacing: 1px; }
-  .playStoreTitle { font-size: 20px; }
-  .androidStoreIcon { font-size: 18px; }
   .wrap        { width: calc(100% - 24px); }
 }
