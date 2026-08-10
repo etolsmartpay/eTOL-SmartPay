@@ -269,19 +269,31 @@ h1 {
 }
 
 .btnPlayStore {
-  padding: 15px 22px;
-  font-size: 16px;
+  padding: 18px 30px;
+  font-size: 17px;
   font-weight: 700;
   letter-spacing: -.1px;
   background: #000;
   border: 1px solid rgba(255,255,255,.18);
   box-shadow: 0 18px 44px rgba(0,0,0,.32);
   color: #fff;
+  min-height: 56px;
 }
 .btnPlayStore:hover {
   background: #1a1a1a;
   transform: translateY(-2px);
   box-shadow: 0 22px 48px rgba(0,0,0,.4);
+}
+
+.btnPlayStore .dlIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.androidStoreIcon {
+  font-size: 22px;
+  color: #a4c639;
+  line-height: 1;
 }
 
 @keyframes downloadGlow {
@@ -510,6 +522,6 @@ footer {
   .brandIcon   { height: 40px; }
   h1           { font-size: clamp(22px, 7.5vw, 28px); }
   .btnPrimary  { font-size: 15px; padding: 13px 18px; }
-  .btnPlayStore { font-size: 15px; padding: 13px 18px; }
+  .btnPlayStore { font-size: 15px; padding: 14px 18px; min-height: 50px; }
   .wrap        { width: calc(100% - 24px); }
 }
