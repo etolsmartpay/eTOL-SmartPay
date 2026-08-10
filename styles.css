@@ -252,7 +252,7 @@ h1 {
 .downloadBadgeLink {
   display: inline-block;
   width: min(320px, 100%);
-  height: 56px;
+  height: auto;
   line-height: 0;
   border: 1px solid var(--border);
   border-radius: 18px;
@@ -274,8 +274,8 @@ h1 {
 .downloadBadge {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   border-radius: 0;
 }
 
