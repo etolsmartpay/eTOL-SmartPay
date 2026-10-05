@@ -47,6 +47,68 @@
     let pendingVote = null;
     let widget;
 
+    const resultsStatus = document.getElementById('poll-results-status');
+    const resultsList = document.getElementById('poll-results-list');
+    const refresh = document.getElementById('poll-results-refresh');
+    let resultsRefreshPending = false;
+    async function loadResults() {
+      if (refresh.disabled) {
+        resultsRefreshPending = true;
+        return;
+      }
+      refresh.disabled = true;
+      resultsStatus.textContent = 'Uitslag laden…';
+      try {
+        const response = await fetch(projectUrl + '/functions/v1/feature-poll', {
+          headers: { apikey: publicKey },
+          cache: 'no-store',
+          signal: AbortSignal.timeout(10000)
+        });
+        if (!response.ok) throw new Error('Results unavailable');
+        const data = await response.json();
+        const options = Array.from(poll.querySelectorAll('input[type="radio"]'));
+        if (!Array.isArray(data.results) || data.results.some(row =>
+          !row || !options.some(option => option.value === row.choice) ||
+          !Number.isSafeInteger(row.votes) || row.votes < 0
+        ) || new Set(data.results.map(row => row.choice)).size !== data.results.length) {
+          throw new Error('Invalid results');
+        }
+        const total = data.results.reduce((sum, row) => sum + row.votes, 0);
+        if (!Number.isSafeInteger(total)) throw new Error('Invalid total');
+        const items = options.map(option => {
+          const votes = data.results.find(row => row.choice === option.value)?.votes || 0;
+          const percentage = total ? Math.round(votes / total * 100) : 0;
+          const label = option.closest('label').querySelector('strong').textContent;
+          const item = document.createElement('li');
+          const name = document.createElement('span');
+          name.textContent = label;
+          const count = document.createElement('strong');
+          count.textContent = votes + (votes === 1 ? ' stem' : ' stemmen') + ' · ' + percentage + '%';
+          const meter = document.createElement('meter');
+          meter.min = 0;
+          meter.max = 100;
+          meter.value = percentage;
+          meter.setAttribute('aria-label', label + ': ' + percentage + '%');
+          item.append(name, count, meter);
+          return item;
+        });
+        resultsList.replaceChildren(...items);
+        resultsStatus.textContent = total === 0 ? 'Nog geen stemmen.' :
+          total + (total === 1 ? ' stem in totaal.' : ' stemmen in totaal.');
+      } catch (_) {
+        resultsList.replaceChildren();
+        resultsStatus.textContent = 'De uitslag is tijdelijk niet beschikbaar.';
+      } finally {
+        refresh.disabled = false;
+        if (resultsRefreshPending) {
+          resultsRefreshPending = false;
+          loadResults();
+        }
+      }
+    }
+    refresh.addEventListener('click', loadResults);
+    loadResults();
+
     poll.addEventListener('submit', async function (event) {
       event.preventDefault();
       if (submitting || complete || !token || !poll.reportValidity()) return;
@@ -74,6 +136,7 @@
         complete = true;
         poll.querySelector('fieldset').disabled = true;
         status.textContent = 'Bedankt! Uw stem is opgeslagen.';
+        loadResults();
       } catch (_) {
         status.textContent = 'Uw stem kon niet worden bevestigd. Probeer het opnieuw.';
       } finally {

@@ -542,6 +542,10 @@
                 <input type="radio" name="feature_request" value="Zakelijk of privé labelen" required />
                 <span><strong>Ritten als zakelijk of privé labelen</strong><span>Meer overzicht voor je administratie.</span></span>
               </label>
+              <label class="poll-option">
+                <input type="radio" name="feature_request" value="Tolbadges verdienen" required />
+                <span><strong>Tolbadges verdienen</strong><span>Bijvoorbeeld brons bij 25 ritten, zilver bij 50, goud bij 100 en platinum bij 250. Gewoon voor de lol, voor je gereden ritten.</span></span>
+              </label>
             </fieldset>
             <div class="contact-honeypot" aria-hidden="true">
               <label for="poll-check">Laat dit veld leeg</label>
@@ -553,6 +557,14 @@
             <p class="contact-status" role="status" aria-live="polite">De poll wordt ingesteld; stemmen is nog niet beschikbaar.</p>
             <noscript><p>Stemmen vereist JavaScript.</p></noscript>
           </form>
+          <section class="poll-results" aria-labelledby="poll-results-title">
+            <div class="poll-results-heading">
+              <h3 id="poll-results-title">Tussenstand</h3>
+              <button id="poll-results-refresh" type="button" title="Uitslag vernieuwen" aria-label="Uitslag vernieuwen"><i class="ti ti-refresh" aria-hidden="true"></i></button>
+            </div>
+            <p id="poll-results-status" role="status" aria-live="polite">Uitslag laden…</p>
+            <ol id="poll-results-list"></ol>
+          </section>
         </section>
         <h2>Functionaliteiten</h2>
         <div class="feature-grid">

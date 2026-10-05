@@ -69,11 +69,21 @@ Dit is een statische GitHub Pages-website, zonder buildstap. Open `index.html` l
 - Websitecontact wordt ook in de Formspree-inbox verwerkt en opgeslagen. De privacytekst maakt onderscheid tussen deze berichten en de lokale appgeschiedenis.
 - De sponsorroute gebruikt expliciet `sponsors.html`, zodat ook directe links op GitHub Pages werken zonder speciale rewrite-configuratie.
 
-De functiepoll onder **In ontwikkeling** biedt drie ideeën: geplande-ritherinneringen, een tolkostenbudget en zakelijk/privé-labels. Dit zijn voorstellen, geen toegezegde functies. Stemmen gaan naar Supabase, niet naar Formspree. Er is geen openbare totaalteller of gegarandeerde één-stem-per-persoon-controle. Alleen het sponsorformulier gebruikt `data-formspree-form`.
+De functiepoll onder **In ontwikkeling** biedt vier ideeën: geplande-ritherinneringen, een tolkostenbudget, zakelijk/privé-labels en tolbadges verdienen. De badges zijn een speels voorstel voor bestaande ritten, met voorbeeldmijlpalen brons (25), zilver (50), goud (100) en platinum (250). Dit zijn voorstellen, geen toegezegde functies. Stemmen gaan naar Supabase, niet naar Formspree. De openbare tussenstand toont aantallen en afgeronde percentages per keuze, ook vóór stemmen. Door afronding hoeven percentages niet exact tot 100% op te tellen. Er is geen gegarandeerde één-stem-per-persoon-controle. Alleen het sponsorformulier gebruikt `data-formspree-form`.
+
+### Tolbadges als vierde keuze activeren
+
+Voer `supabase/migrations/20261005_feature_poll_badges.sql` uit in SQL Editor. Deze query verruimt uitsluitend de keuzecontrole en behoudt bestaande stemmen en toegangsregels. Deploy daarna de bijgewerkte `supabase/functions/feature-poll/index.ts` opnieuw als `feature-poll` (Verify JWT blijft uit) en publiceer de gewijzigde `index.html`. De uitslagfunctie groepeert ook de nieuwe keuze automatisch; daarvoor is geen aanvullende wijziging nodig. Bij een nieuwe installatie voer je eerst de oorspronkelijke tabelquery uit en daarna deze badges-query.
 
 ## Supabase-poll instellen
 
-De websitekoppeling is voorbereid voor `https://pqblykfmvmqmsmqsfsld.supabase.co`. De publishable key in `site.js` is publiek; plaats daar nooit geheime sleutels. Totdat de Turnstile-sitekey is ingevuld blijft stemmen uitgeschakeld.
+De websitekoppeling gebruikt `https://pqblykfmvmqmsmqsfsld.supabase.co`. De publishable key en Turnstile-sitekey in `site.js` zijn publiek; plaats daar nooit geheime sleutels.
+
+### Openbare uitslag activeren bij bestaand project
+
+1. Voer uitsluitend de nieuwe query `supabase/migrations/20261005_feature_poll_results.sql` uit in SQL Editor. Voer de oorspronkelijke tabelquery niet opnieuw uit. Deze functie groepeert alle stemmen in de database en geeft alleen keuze/aantal terug. Alleen `service_role` mag deze SQL-functie uitvoeren; individuele rijen blijven afgeschermd.
+2. Vervang de gedeployde `feature-poll` Edge Function door de bijgewerkte `supabase/functions/feature-poll/index.ts` en deploy opnieuw. Verify JWT blijft uit; POST blijft Turnstile vereisen. GET retourneert alleen de gegroepeerde totalen zonder CAPTCHA.
+3. Publiceer `index.html`, `site.js`, `styles.css` en `privacy.html` op GitHub Pages. De uitslag wordt bij openen, na een opgeslagen stem en via de vernieuwknop geladen. Er is geen achtergrondpolling. Netwerkfouten tonen een foutmelding, nooit een fictieve nulstand. Zonder deze serverupdate is de tussenstand tijdelijk niet beschikbaar.
 
 1. Open de Supabase SQL Editor en voer `supabase/migrations/20261005_feature_poll.sql` één keer uit. RLS staat aan en er zijn geen publieke lees- of schrijfpolicies. Alleen de serverfunctie schrijft stemmen.
 2. Maak in Cloudflare Turnstile een widget voor `etol-smartpay.nl` en `www.etol-smartpay.nl` (Managed). Vul de publieke sitekey in bij `turnstileSiteKey` in `site.js`. Gebruik geen testsleutels op de echte website.
