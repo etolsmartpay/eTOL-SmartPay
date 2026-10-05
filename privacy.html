@@ -5,55 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#070B18" />
   <title>Privacybeleid — eTOL SmartPay</title>
-  <meta name="description" content="Privacybeleid van de eTOL SmartPay Android-app." />
+  <meta name="description" content="Privacybeleid van eTOL SmartPay: lokale appgegevens, externe betaaldiensten en het contactformulier op de website." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://etol-smartpay.nl/privacy" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css">
-  <style>
-    /* ── Mobile hamburger nav ── */
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 8px;
-      color: var(--text);
-      cursor: pointer;
-      font-size: 20px;
-      line-height: 1;
-    }
-    @media (max-width: 640px) {
-      .nav-toggle { display: flex; align-items: center; justify-content: center; }
-      .nav {
-        position: absolute;
-        top: var(--headerH);
-        right: 16px;
-        flex-direction: column;
-        background: rgba(12,18,32,0.96);
-        backdrop-filter: blur(16px);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 12px;
-        gap: 6px;
-        box-shadow: 0 12px 40px rgba(0,0,0,0.5);
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(-8px);
-        transition: opacity 0.2s, transform 0.2s;
-        mask-image: none;
-        -webkit-mask-image: none;
-        z-index: 999;
-        overflow: visible;
-      }
-      .nav.open {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
-      }
-      .nav .chip { width: 100%; justify-content: center; }
-    }
-  </style>
+  <script src="site.js" defer></script>
 </head>
 <body>
   <div class="noise" aria-hidden="true"></div>
@@ -68,17 +25,18 @@
         </div>
       </div>
 
-      <button class="nav-toggle" aria-label="Menu openen" id="navToggle">
+      <button class="nav-toggle" aria-label="Menu openen" aria-controls="mainNav" aria-expanded="false" id="navToggle" type="button">
         <i class="ti ti-menu-2"></i>
       </button>
-      <nav class="nav" id="mainNav">
-        <a class="chip" href="/">Home</a>
-        <a class="chip" href="/#how">Hoe werkt het</a>
-        <a class="chip" href="/#idea">Over de app</a>
-        <a class="chip" href="/#screenshots">Screenshots</a>
-        <a class="chip" href="/#faq">FAQ</a>
-        <a class="chip" href="/privacy">Privacybeleid</a>
-        <a class="chip" href="/#download">Download</a>
+      <nav class="nav" id="mainNav" aria-label="Hoofdnavigatie">
+        <a class="chip" href="index.html">Home</a>
+        <a class="chip" href="index.html#how">Hoe werkt het</a>
+        <a class="chip" href="index.html#idea">Over de app</a>
+        <a class="chip" href="index.html#screenshots">Screenshots</a>
+        <a class="chip" href="index.html#faq">FAQ</a>
+        <a class="chip" href="privacy.html" aria-current="page">Privacybeleid</a>
+        <a class="chip" href="sponsors.html">Steun de app</a>
+        <a class="chip" href="index.html#download">Download</a>
       </nav>
     </div>
   </header>
@@ -92,32 +50,32 @@
         class="hero-banner-img"
         loading="eager"
         decoding="async"
-        width="1500"
-        height="auto"
+        width="1030"
+        height="499"
       >
     </div>
 
     <section style="max-width:760px;margin:60px auto;color:rgba(255,255,255,.88);line-height:1.75;">
 
       <h1 style="font-size:2rem;margin-bottom:.4em;">Privacybeleid</h1>
-      <p style="color:rgba(255,255,255,.55);margin-bottom:2.5em;">Laatst bijgewerkt: 26 juli 2026</p>
+      <p style="color:rgba(255,255,255,.55);margin-bottom:2.5em;">Laatst bijgewerkt: 5 oktober 2026</p>
 
     <h2>1. Wie zijn wij?</h2>
-    <p>eTOL SmartPay is een gratis Android-app waarmee gebruikers tol kunnen betalen op de A24 Blankenburgverbinding via het officiële e-TOL betaalsysteem. De app is ontwikkeld als persoonlijk hulpmiddel en wordt aangeboden zonder winstoogmerk. <a href="/#idea">Waarom?</a></p>
+    <p>eTOL SmartPay is een gratis betaalassistent voor de A24 Blankenburgverbinding via het officiële e-TOL betaalsysteem. De Android-app is beschikbaar; de iPhone-versie is in ontwikkeling. <a href="index.html#idea">Waarom?</a></p>
 
     <h2>2. Welke gegevens verwerken wij?</h2>
-    <p>De app verwerkt de volgende gegevens <strong>uitsluitend lokaal op uw apparaat</strong>:</p>
+    <p>De app bewaart uw kentekens, voorkeuren en geschiedenis <strong>lokaal op uw apparaat</strong>. Voor voertuigcontrole en betaling worden de daarvoor benodigde gegevens met externe diensten gedeeld:</p>
     <ul>
       <li><strong>Kenteken</strong> — voor het opzoeken van voertuiggegevens via de openbare RDW-API en het eTOL-voertuigregister.</li>
       <li><strong>E-mailadres</strong> — wordt meegestuurd bij de betaalaanvraag naar e-TOL voor de betalingsbevestiging.</li>
       <li><strong>Bankkeuze (BIC)</strong> — voor het starten van de iDEAL-betaling.</li>
-      <li><strong>GPS-locatie</strong> — wordt continu gebruikt op de achtergrond om automatisch te detecteren wanneer u de A24-tolpoort passeert. Locatiedata wordt <strong>niet opgeslagen en niet gedeeld</strong> met derden.</li>
+      <li><strong>GPS-locatie en tolpassages</strong> — voor optionele detectie op de achtergrond. Bij een gedetecteerde passage worden onder meer tijdstip, locatie, nauwkeurigheid en rijrichting in de lokale passagegeschiedenis bewaard. De detectie vindt op het apparaat plaats; er wordt geen route naar een externe locatiedienst gestuurd.</li>
       <li><strong>Betaalgeschiedenis</strong> — betalingskenmerk, datum en bedrag, opgeslagen in een lokale database op uw apparaat.</li>
     </ul>
-    <p>Wij slaan <strong>geen</strong> gegevens op op externe servers. Er is geen account, geen login en geen cloud-opslag.</p>
+    <p>De app heeft geen gebruikersaccount of cloudgeschiedenis. De betaling zelf wordt verwerkt door e-TOL en uw bank; daarvoor geldt ook hun eigen privacybeleid. De app bewaart geen bank-inloggegevens.</p>
 
     <h2>3. Waarvoor gebruiken wij uw locatie?</h2>
-    <p>De app vraagt toegang tot uw locatie, ook op de achtergrond (<code>ACCESS_BACKGROUND_LOCATION</code>). Dit is uitsluitend nodig om te detecteren of u de A24-tolpoort passeert terwijl u rijdt — op dat moment heeft u uw telefoon niet in de hand. De locatie wordt alleen vergeleken met de coördinaten van de tolpoort en wordt <strong>niet opgeslagen of verzonden</strong>.</p>
+    <p>Met uw toestemming gebruikt de app locatie, ook op de achtergrond, om A24-passages te detecteren. De locatie wordt op het apparaat met de A24-detectiegebieden vergeleken. Gegevens van gedetecteerde passages blijven lokaal beschikbaar voor uw overzicht en betaalherinneringen. U kunt locatiebewaking uitschakelen en handmatig blijven betalen.</p>
 
     <h2>4. Delen wij gegevens met derden?</h2>
     <p>De app communiceert met de volgende externe diensten:</p>
@@ -125,15 +83,15 @@
       <li><strong>e-TOL (betalentolpassage.e-tol.nl)</strong> — voor het opzoeken van het voertuigtype en het uitvoeren van de betaling. Dit is de officiële tolbeheerder van de A24.</li>
       <li><strong>RDW Open Data (opendata.rdw.nl)</strong> — voor het ophalen van merk en model op basis van het kenteken. Dit is een openbare overheids-API.</li>
       <li><strong>iDEAL / uw bank</strong> — de betaling verloopt via uw eigen bank. Wij ontvangen alleen een betalingskenmerk terug.</li>
-      <li><strong>Sentry (sentry.io)</strong> — voor anonieme foutrapportage bij crashes. Er worden geen persoonsgegevens meegestuurd.</li>
+      <li><strong>Sentry (sentry.io)</strong> — voor technische foutrapportage wanneer dit in de app is ingeschakeld.</li>
     </ul>
     <p>Wij verkopen geen gegevens aan derden.</p>
 
     <h2>5. Beveiliging</h2>
-    <p>Alle gegevens worden lokaal opgeslagen op uw apparaat. De communicatie met externe diensten verloopt uitsluitend via HTTPS. Het kenteken, e-mailadres en bankkeuze worden opgeslagen in de beveiligde app-opslag van Android (SharedPreferences / SQLite), niet toegankelijk voor andere apps.</p>
+    <p>Appgegevens worden in de app-opslag van uw toestel bewaard (SharedPreferences / SQLite). Communicatie met de genoemde externe diensten verloopt via HTTPS. Beveilig ook uw eigen toestel met een toegangscode en actuele software.</p>
 
     <h2>6. Gegevens verwijderen</h2>
-    <p>U kunt alle opgeslagen gegevens verwijderen door de app te verwijderen van uw apparaat. Er zijn geen gegevens op externe servers die verwijderd moeten worden.</p>
+    <p>U kunt de lokale appgegevens verwijderen door de app van uw apparaat te verwijderen. Betalingsgegevens bij e-TOL en uw bank vallen onder hun eigen bewaartermijnen en privacybeleid. Neem voor vragen over een contactbericht via de website contact met ons op via het <a href="sponsors.html#sponsor-contact">contactformulier</a>.</p>
 
     <h2>7. Kinderen</h2>
     <p>De app is bedoeld voor automobilisten van 18 jaar en ouder. Wij verzamelen geen gegevens van kinderen.</p>
@@ -142,7 +100,15 @@
     <p>Dit privacybeleid kan worden bijgewerkt bij nieuwe versies van de app. De meest recente versie is altijd beschikbaar op <a href="https://etol-smartpay.nl/privacy" style="color:#3B82F6;">etol-smartpay.nl/privacy</a>.</p>
 
     <h2>9. Contact</h2>
-    <p>Vragen over dit privacybeleid? Neem contact op via de informatie op <a href="https://etol-smartpay.nl" style="color:#3B82F6;">etol-smartpay.nl</a>.</p>
+    <p>Vragen over dit privacybeleid? Gebruik het <a href="sponsors.html#sponsor-contact">contactformulier</a>. Geef geen bankgegevens of wachtwoorden door.</p>
+
+    <h2 id="websitecontact">10. Contact via de website</h2>
+    <p>Bij gebruik van het contactformulier verwerken wij uw naam, e-mailadres, optionele bedrijfsnaam en bericht om uw vraag te beantwoorden of sponsoring te bespreken. Deze berichten staan los van de lokale appgeschiedenis.</p>
+    <p>Het formulier wordt verzonden naar <strong>Formspree</strong>. Deze dienst verwerkt en bewaart de inzending in de formulierinbox en stuurt deze door naar onze e-mailinbox. Voor spamcontrole kan de beveiligde verzendpagina een CAPTCHA tonen. Daarbij kunnen technische gegevens, zoals uw IP-adres en browsergegevens, door Formspree en de gebruikte CAPTCHA-dienst worden verwerkt. Zie het <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">privacybeleid van Formspree</a>.</p>
+    <p>Verstuur geen gevoelige gegevens die niet nodig zijn voor uw vraag. Wij gebruiken uw bericht niet om u zonder toestemming voor nieuwsbrieven aan te melden. U kunt via het contactformulier vragen om inzage of verwijdering van uw contactbericht.</p>
+
+    <h2>11. Websitehosting en externe bestanden</h2>
+    <p>De website wordt gehost op GitHub Pages. Uw browser haalt daarnaast lettertypen en iconen op bij Google Fonts en jsDelivr. Bij het laden van de website kunnen deze aanbieders technische verzoekgegevens ontvangen. De website gebruikt geen advertentie- of analyticscode.</p>
 
     </section>
   </main>
@@ -151,58 +117,23 @@
     <div class="fineprint">
       <div><strong>Disclaimer</strong></div>
       <div>
-        Deze applicatie is een <strong>onofficiële Android-app</strong> en staat los van de officiële e‑TOL organisatie.
+        Deze applicatie is een <strong>onofficiële betaalassistent</strong> en staat los van de officiële e‑TOL organisatie.
         Gebruik is volledig op eigen risico. De ontwikkelaar is niet aansprakelijk voor foutieve invoer, gemiste betalingen/boetes,
         of storingen in e‑TOL of betaalomgevingen.
       </div>
       <div>
-        <strong>Privacy</strong>: Kentekens en e‑mail worden alleen lokaal op het apparaat opgeslagen. Er is geen externe database/server en er worden geen betaalgegevens opgeslagen.
+        <strong>Privacy</strong>: Appgeschiedenis wordt lokaal bewaard; betalingen en websitecontact gebruiken externe diensten. De app bewaart geen bank-inloggegevens.
       </div>
       <div style="margin-top:0.5rem;opacity:0.45;font-size:0.72em;">© 2026 eTOL SmartPay</div>
       <div class="footerLinks">
         <a href="https://play.google.com/store/apps/details?id=com.etol.smartpay" target="_blank" rel="noopener noreferrer">Download</a>
         <span>•</span>
-        <a href="/privacy">Privacybeleid</a>
+        <a href="privacy.html">Privacybeleid</a>
+        <span>•</span>
+        <a href="sponsors.html">Steun de app</a>
       </div>
     </div>
   </footer>
-
-  <script>
-    // ── Mobile hamburger nav toggle ────────────────────────────────────────────────
-    (function initNavToggle() {
-      var toggle = document.getElementById('navToggle');
-      var nav = document.getElementById('mainNav');
-      if (!toggle || !nav) return;
-
-      toggle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        nav.classList.toggle('open');
-        var isOpen = nav.classList.contains('open');
-        toggle.setAttribute('aria-expanded', isOpen);
-        toggle.innerHTML = isOpen
-          ? '<i class="ti ti-x"></i>'
-          : '<i class="ti ti-menu-2"></i>';
-      });
-
-      // Close nav when clicking a link
-      nav.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          nav.classList.remove('open');
-          toggle.innerHTML = '<i class="ti ti-menu-2"></i>';
-          toggle.setAttribute('aria-expanded', 'false');
-        });
-      });
-
-      // Close nav on outside click
-      document.addEventListener('click', function(e) {
-        if (!nav.contains(e.target) && !toggle.contains(e.target)) {
-          nav.classList.remove('open');
-          toggle.innerHTML = '<i class="ti ti-menu-2"></i>';
-          toggle.setAttribute('aria-expanded', 'false');
-        }
-      });
-    })();
-  </script>
 
 </body>
 </html>

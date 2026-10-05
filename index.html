@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#070B18" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <title>eTOL SmartPay — A24 tol betaalapp voor Android</title>
-  <meta name="description" content="Betaal tol op de A24 met eTOL SmartPay — gratis app voor Android. Snel, veilig, offline. GPS-herinnering, iDEAL, geen account. Download nu!" />
+  <title>eTOL SmartPay — tol betalen op de A24</title>
+  <meta name="description" content="Betaal A24-tol via iDEAL met eTOL SmartPay. Gratis voor Android, met vooruitbetalen, meerdere kentekens en betaalherinneringen. iPhone-versie in ontwikkeling." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://etol-smartpay.nl/" />
   <link rel="icon" href="etol-icon.png" type="image/png" />
@@ -16,16 +16,16 @@
   <!-- Open Graph -->
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://etol-smartpay.nl/" />
-  <meta property="og:title"       content="eTOL SmartPay — A24 tol betaalapp voor Android" />
-  <meta property="og:description" content="Gratis Android-app voor snelle A24-tolbetalingen. GPS-herinnering, RDW-verificatie, iDEAL. Geen account, alles lokaal." />
+  <meta property="og:title"       content="eTOL SmartPay — tol betalen op de A24" />
+  <meta property="og:description" content="Gratis voor Android: A24-tol betalen via iDEAL, vooruitbetalen en betaalherinneringen. Geen account nodig. iPhone-versie in ontwikkeling." />
   <meta property="og:image"       content="https://etol-smartpay.nl/screenshots/SmartPay_1.jpg" />
   <meta property="og:locale"      content="nl_NL" />
   <meta property="og:site_name"   content="eTOL SmartPay" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image" />
-  <meta name="twitter:title"       content="eTOL SmartPay — A24 tol betaalapp voor Android" />
-  <meta name="twitter:description" content="Gratis Android-app voor snelle A24-tolbetalingen. GPS-herinnering, RDW-verificatie, iDEAL." />
+  <meta name="twitter:title"       content="eTOL SmartPay — tol betalen op de A24" />
+  <meta name="twitter:description" content="A24-tol betalen via iDEAL, vooruitbetalen en betaalherinneringen. Gratis voor Android. iPhone-versie in ontwikkeling." />
   <meta name="twitter:image"       content="https://etol-smartpay.nl/screenshots/SmartPay_1.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,49 +51,6 @@
       margin-bottom: 1.25rem;
     }
     .hero-subtitle strong { color: rgba(255,255,255,0.92); font-weight: 600; }
-
-    /* ── Mobile hamburger nav ── */
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 8px;
-      color: var(--text);
-      cursor: pointer;
-      font-size: 20px;
-      line-height: 1;
-    }
-    @media (max-width: 640px) {
-      .nav-toggle { display: flex; align-items: center; justify-content: center; }
-      .nav {
-        position: absolute;
-        top: var(--headerH);
-        right: 16px;
-        flex-direction: column;
-        background: rgba(12,18,32,0.96);
-        backdrop-filter: blur(16px);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 12px;
-        gap: 6px;
-        box-shadow: 0 12px 40px rgba(0,0,0,0.5);
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(-8px);
-        transition: opacity 0.2s, transform 0.2s;
-        mask-image: none;
-        -webkit-mask-image: none;
-        z-index: 999;
-        overflow: visible;
-      }
-      .nav.open {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
-      }
-      .nav .chip { width: 100%; justify-content: center; }
-    }
 
     /* ── Scroll reveal ── */
     .reveal {
@@ -244,7 +201,7 @@
       transition: max-height 0.4s ease;
     }
     .feature-accordion-panel.active {
-      max-height: 600px;
+      max-height: none;
     }
 
     /* ── Carousel ── */
@@ -468,15 +425,16 @@
         </div>
       </div>
 
-      <button class="nav-toggle" aria-label="Menu openen" id="navToggle">
+      <button class="nav-toggle" aria-label="Menu openen" aria-controls="mainNav" aria-expanded="false" id="navToggle" type="button">
         <i class="ti ti-menu-2"></i>
       </button>
-      <nav class="nav" id="mainNav">
+      <nav class="nav" id="mainNav" aria-label="Hoofdnavigatie">
         <a class="chip" href="#how">Hoe werkt het</a>
         <a class="chip" href="#idea">Over de app</a>
         <a class="chip" href="#screenshots">Screenshots</a>
         <a class="chip" href="#faq">FAQ</a>
-        <a class="chip" href="/privacy">Privacybeleid</a>
+        <a class="chip" href="privacy.html">Privacybeleid</a>
+        <a class="chip" href="sponsors.html">Steun de app</a>
         <a class="chip" href="#download">Download</a>
       </nav>
     </div>
@@ -494,15 +452,15 @@
           class="hero-banner-img"
           loading="eager"
           decoding="async"
-          width="1500"
-          height="auto"
+          width="1030"
+          height="499"
         >
       </div>
 
       <div class="heroLeft">
-        <h1>Tol betalen voor de A24 — makkelijk met eTOL SmartPay</h1>
+        <h1>eTOL SmartPay — tol betalen voor de A24</h1>
         <p class="hero-subtitle">
-          <strong>Betaal in seconden via iDEAL</strong> — de gratis app die ervoor zorgt dat je nooit meer <strong>A24 tol</strong> vergeet te betalen.
+          <strong>Snel betalen via iDEAL</strong> — de gratis app die je helpt je <strong>A24 tol</strong> op tijd te betalen.
         </p>
 
         <div class="privacy-note">
@@ -512,7 +470,7 @@
             <span><i class="ti ti-check pp-check"></i> Geen account vereist</span>
             <span><i class="ti ti-satellite pp-plus"></i> GPS melding bij passage A24</span>
             <span><i class="ti ti-check pp-check"></i> Geen tracking</span>
-            <span><i class="ti ti-device-mobile pp-plus"></i> Alles lokaal op je telefoon</span>
+            <span><i class="ti ti-device-mobile pp-plus"></i> Geschiedenis op je telefoon</span>
             <span><i class="ti ti-check pp-check"></i> Geen advertenties</span>
             <span><i class="ti ti-lock-open-off pp-check"></i> Geen verplichte bankkoppelingen</span>
             <span><i class="ti ti-check pp-check"></i> 100% gratis</span>
@@ -529,7 +487,8 @@
         </div>
 
         <p class="note">
-          Beschikbaar voor Android 8.0 en hoger. iOS volgt later.
+          <strong>Android:</strong> beschikbaar via Google Play.<br>
+          <strong>iPhone:</strong> in ontwikkeling — binnenkort beschikbaar.
         </p>
 
         <img
@@ -570,7 +529,7 @@
               <i class="ti ti-car feature-icon"></i>
               <div>
                 <div class="feature-text">Meerdere voertuigen beheren</div>
-                <div class="feature-sub">Wissel snel tussen kentekens — ideaal voor wagenparken of gezinnen</div>
+                <div class="feature-sub">Wissel snel tussen kentekens en kies je standaardvoertuig direct bij het kenteken</div>
               </div>
             </div>
             <div class="feature-row">
@@ -592,6 +551,13 @@
               <div>
                 <div class="feature-text">Betaling verloopt volledig in jouw bankapp</div>
                 <div class="feature-sub">De app opent alleen de betaallink — de transactie vindt buiten de app plaats, in jouw eigen bankapp</div>
+              </div>
+            </div>
+            <div class="feature-row">
+              <i class="ti ti-calendar-check feature-icon"></i>
+              <div>
+                <div class="feature-text">Vooraf of achteraf betalen</div>
+                <div class="feature-sub">Betaal tot 7 dagen vóór je passage of binnen 3 dagen erna. Vooruitbetaalde ritten worden aan je passages gekoppeld</div>
               </div>
             </div>
           </div>
@@ -678,7 +644,7 @@
               <i class="ti ti-bell-ringing feature-icon"></i>
               <div>
                 <div class="feature-text">Betaalherinneringen</div>
-                <div class="feature-sub">Dagelijkse herinnering zolang een tolpassage onbetaald is (Optioneel)</div>
+                <div class="feature-sub">Optionele herinneringen na 24 en 48 uur, met een laatste waarschuwing na 68 uur — 4 uur vóór de betaaltermijn verloopt</div>
               </div>
             </div>
             <div class="feature-row">
@@ -699,15 +665,15 @@
             <div class="feature-row">
               <i class="ti ti-database-off feature-icon"></i>
               <div>
-                <div class="feature-text">Geen externe server of database</div>
-                <div class="feature-sub">Alle gegevens blijven lokaal op het apparaat — er wordt niets verzonden</div>
+                <div class="feature-text">Lokale opslag, geen cloudaccount</div>
+                <div class="feature-sub">Kentekens en geschiedenis worden lokaal bewaard. Voor voertuigcontrole en betaling gebruikt de app RDW, e-TOL en je bank</div>
               </div>
             </div>
             <div class="feature-row">
               <i class="ti ti-user-off feature-icon"></i>
               <div>
                 <div class="feature-text">Geen account vereist</div>
-                <div class="feature-sub">Direct starten zonder registratie, wachtwoorden of persoonlijke gegevens</div>
+                <div class="feature-sub">Direct starten zonder registratie of app-wachtwoord. Voor betaling gebruik je je kenteken en e-mailadres</div>
               </div>
             </div>
             <div class="feature-row">
@@ -750,7 +716,7 @@
 
       <div class="card" style="margin-top:14px; border-left: 3px solid #a78bfa;">
         <h3 class="cardTitle">③ Klaar — A24 tol betaald</h3>
-        <p>Schakel optioneel GPS-bewaking in. De app stuurt een pushmelding wanneer je de A24 nadert, zodat je het betalen niet meer vergeet.</p>
+        <p>Controleer de betaalbevestiging. Met optionele GPS-bewaking krijg je een melding bij een gedetecteerde A24-passage. Voor onbetaalde passages kun je betaalherinneringen inschakelen.</p>
       </div>
 
       </div>
@@ -813,6 +779,9 @@
               <img src="screenshots/SmartPay_Overview.jpg" alt="SmartPay hoofdscherm" loading="eager" decoding="async">
             </div>
             <div class="carousel-slide">
+              <img src="screenshots/SmartPay_Inzicht.jpg" alt="SmartPay kosteninzicht" loading="lazy" decoding="async">
+            </div>
+            <div class="carousel-slide">
               <img src="screenshots/SmartPay_AutoPay.jpg" alt="SmartPay automatisch betalen" loading="lazy" decoding="async">
             </div>
             <div class="carousel-slide">
@@ -856,7 +825,7 @@
 
       <div class="card" style="margin-top:14px; border-left: 3px solid #22c55e;">
         <h3 class="cardTitle">🔋 Kost GPS veel batterij?</h3>
-        <p>De GPS-bewaking is geoptimaliseerd en gebruikt geen aanzienlijke batterij. De app checkt alleen periodiek je locatie en werkt ook in de achtergrond op een efficiënte manier.</p>
+        <p>De GPS-bewaking is afgestemd op detectie van de A24 en werkt ook op de achtergrond. Het batterijverbruik hangt af van je telefoon, instellingen en GPS-ontvangst.</p>
       </div>
 
       <div class="card" style="margin-top:14px; border-left: 3px solid #a78bfa;">
@@ -866,17 +835,27 @@
 
       <div class="card" style="margin-top:14px; border-left: 3px solid #f59e0b;">
         <h3 class="cardTitle">🗑️ Kan ik al mijn gegevens verwijderen?</h3>
-        <p>Ja, al je gegevens worden automatisch verwijderd als je de app van je telefoon verwijdert — er is niets wat we online moeten/kunnen verwijderen omdat we geen servers hebben.</p>
+        <p>Je kunt de lokale appgegevens verwijderen door de app van je telefoon te verwijderen. Gegevens van betalingen bij e-TOL en je bank vallen onder hun eigen privacybeleid.</p>
       </div>
 
       <div class="card" style="margin-top:14px; border-left: 3px solid #8b5cf6;">
         <h3 class="cardTitle">🍎 Wanneer komt iOS uit?</h3>
-        <p>We werken aan een iPhone-versie, gepland voor 2026. Momenteel is de app beschikbaar voor alle Android-toestellen (8.0+).</p>
+        <p>De iPhone-versie is in ontwikkeling en komt binnenkort beschikbaar. Een releasedatum is nog niet bekend. De Android-app is nu beschikbaar via Google Play.</p>
       </div>
 
       <div class="card" style="margin-top:14px; border-left: 3px solid #06b6d4;">
         <h3 class="cardTitle">💳 Welke banken werken met iDEAL?</h3>
         <p>Alle Nederlandse banken die iDEAL ondersteunen. De app laat alle beschikbare banken zien op het moment van betaling door eTOL worden ondersteund.</p>
+      </div>
+
+      <div class="card" style="margin-top:14px; border-left: 3px solid #22c55e;">
+        <h3 class="cardTitle">Wanneer moet ik betalen?</h3>
+        <p>Je kunt tot 7 dagen vóór een passage betalen, of binnen 3 dagen erna. Bij te laat betalen ontvang je een betalingsherinnering met € 9,00 administratiekosten. Je blijft zelf verantwoordelijk voor tijdige betaling.</p>
+      </div>
+
+      <div class="card" style="margin-top:14px; border-left: 3px solid #3b82f6;">
+        <h3 class="cardTitle">Welke betaalherinneringen kan ik ontvangen?</h3>
+        <p>Voor een gedetecteerde, onbetaalde passage kun je herinneringen inschakelen na 24 en 48 uur. Na 68 uur volgt een laatste waarschuwing, 4 uur vóór de betaaltermijn verloopt. Ontvangst hangt af van detectie, meldingsrechten en je telefooninstellingen.</p>
       </div>
 
       </div>
@@ -887,18 +866,20 @@
       <div class="fineprint">
         <div><strong>Disclaimer</strong></div>
         <div>
-          Deze applicatie is een <strong>onofficiële Android-app</strong> en staat los van de officiële e‑TOL organisatie.
+          Deze applicatie is een <strong>onofficiële betaalassistent</strong> en staat los van de officiële e‑TOL organisatie.
           Gebruik is volledig op eigen risico. De ontwikkelaar is niet aansprakelijk voor foutieve invoer, gemiste betalingen/boetes,
           of storingen in e‑TOL of betaalomgevingen.
         </div>
         <div>
-          <strong>Privacy</strong>: Kentekens en e‑mail worden alleen lokaal op het apparaat opgeslagen. Er is geen externe database/server en er worden geen betaalgegevens opgeslagen.
+          <strong>Privacy</strong>: Kentekens en betaalgeschiedenis worden lokaal bewaard. Voertuigcontrole en betaling gebruiken externe diensten. De app bewaart geen bank-inloggegevens.
         </div>
         <div style="margin-top:0.5rem;opacity:0.45;font-size:0.72em;">© 2026 eTOL SmartPay</div>
         <div class="footerLinks">
           <a href="https://play.google.com/store/apps/details?id=com.etol.smartpay" target="_blank" rel="noopener noreferrer">Download</a>
           <span>•</span>
-          <a href="/privacy">Privacybeleid</a>
+          <a href="privacy.html">Privacybeleid</a>
+          <span>•</span>
+          <a href="sponsors.html">Steun de app</a>
         </div>
       </div>
     </footer>
@@ -910,7 +891,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "eTOL SmartPay",
-    "description": "Gratis Android-app voor snelle A24-tolbetalingen via e-TOL.nl. Met GPS-herinnering bij tunnelpassage, RDW-kenteken-verificatie en directe iDEAL-betaling. Geen account nodig.",
+    "description": "Gratis Android-app voor A24-tolbetalingen via iDEAL. Met vooruitbetalen, meerdere kentekens en optionele betaalherinneringen. Geen account nodig. Een iPhone-versie is in ontwikkeling.",
     "url": "https://etol-smartpay.nl/",
     "operatingSystem": "Android 8.0+",
     "applicationCategory": "UtilitiesApplication",
@@ -936,7 +917,7 @@
         "name": "Hoe betaal je tol op de A24?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Met eTOL SmartPay betaal je tol op de A24 in drie stappen: 1) Voer je kenteken in, 2) Betaal via iDEAL in enkele seconden, 3) Je bent klaar. De app herinnert je automatisch via GPS wanneer je de A24 nadert."
+          "text": "Met eTOL SmartPay betaal je tol op de A24 in drie stappen: 1) Voer je kenteken in, 2) Betaal via iDEAL in je bankomgeving, 3) Controleer de betaalbevestiging. Met optionele GPS-bewaking krijg je een melding bij een gedetecteerde A24-passage."
         }
       },
       {
@@ -957,18 +938,26 @@
       },
       {
         "@type": "Question",
-        "name": "Hoeveel kost tol op de A24?",
+        "name": "Wanneer komt iOS uit?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "De tol voor de A24 bedraagt € 1,57 voor lichte voertuigen en € 9,49 voor zware voertuigen per passage. eTOL SmartPay berekent de juiste prijs automatisch op basis van je voertuigklasse."
+          "text": "De iPhone-versie is in ontwikkeling en komt binnenkort beschikbaar. Een releasedatum is nog niet bekend. De Android-app is nu beschikbaar via Google Play."
         }
       },
       {
         "@type": "Question",
-        "name": "Is eTOL SmartPay veilig voor tol betalen?",
+        "name": "Wanneer moet ik betalen?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ja, eTOL SmartPay is volledig veilig. Alle gegevens blijven lokaal op je telefoon. De betaling verloopt via je eigen bankapp (iDEAL). We hebben geen servers en geen toegang tot je financiële gegevens."
+          "text": "Je kunt tot 7 dagen vóór een passage betalen, of binnen 3 dagen erna. Bij te laat betalen ontvang je een betalingsherinnering met € 9,00 administratiekosten. Je blijft zelf verantwoordelijk voor tijdige betaling."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Welke betaalherinneringen kan ik ontvangen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Voor een gedetecteerde, onbetaalde passage kun je herinneringen inschakelen na 24 en 48 uur. Na 68 uur volgt een laatste waarschuwing, 4 uur vóór de betaaltermijn verloopt. Ontvangst hangt af van detectie, meldingsrechten en je telefooninstellingen."
         }
       }
     ]
@@ -1113,6 +1102,16 @@
     // ── Feature accordion ───────────────────────────────────────────────────
     (function initAccordion() {
       const toggles = document.querySelectorAll('.feature-accordion-toggle');
+      function resizePanels() {
+        toggles.forEach(function(toggle) {
+          const panel = document.getElementById(toggle.getAttribute('data-target'));
+          if (panel) panel.style.maxHeight = panel.classList.contains('active')
+            ? panel.scrollHeight + 'px' : '0px';
+        });
+      }
+      resizePanels();
+      window.addEventListener('resize', resizePanels);
+      document.fonts.ready.then(resizePanels);
       toggles.forEach(function(toggle) {
         toggle.addEventListener('click', function() {
           const targetId = this.getAttribute('data-target');
@@ -1131,6 +1130,7 @@
             this.classList.add('active');
             if (panel) panel.classList.add('active');
           }
+          resizePanels();
         });
       });
     })();
@@ -1192,41 +1192,6 @@
       }, { passive: true });
     })();
 
-    // ── Hamburger nav toggle ────────────────────────────────────────────────
-    (function initNavToggle() {
-      var toggle = document.getElementById('navToggle');
-      var nav = document.getElementById('mainNav');
-      if (!toggle || !nav) return;
-
-      toggle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        nav.classList.toggle('open');
-        var isOpen = nav.classList.contains('open');
-        toggle.setAttribute('aria-expanded', isOpen);
-        toggle.innerHTML = isOpen
-          ? '<i class="ti ti-x"></i>'
-          : '<i class="ti ti-menu-2"></i>';
-      });
-
-      // Close nav when clicking a link
-      nav.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          nav.classList.remove('open');
-          toggle.innerHTML = '<i class="ti ti-menu-2"></i>';
-          toggle.setAttribute('aria-expanded', 'false');
-        });
-      });
-
-      // Close nav on outside click
-      document.addEventListener('click', function(e) {
-        if (!nav.contains(e.target) && !toggle.contains(e.target)) {
-          nav.classList.remove('open');
-          toggle.innerHTML = '<i class="ti ti-menu-2"></i>';
-          toggle.setAttribute('aria-expanded', 'false');
-        }
-      });
-    })();
-
     // ── Scroll reveal animations ────────────────────────────────────────────
     (function initReveal() {
       var reveals = document.querySelectorAll('.reveal');
@@ -1244,5 +1209,6 @@
       reveals.forEach(function(el) { observer.observe(el); });
     })();
   </script>
+  <script src="site.js" defer></script>
 </body>
 </html>

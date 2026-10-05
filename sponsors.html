@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#070B18" />
+  <title>Steun de app — eTOL SmartPay</title>
+  <meta name="description" content="Steun de ontwikkeling van eTOL SmartPay. Lees over vrijwillige bijdragen of neem contact op over zakelijke sponsoring." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://etol-smartpay.nl/sponsors.html" />
+  <link rel="icon" href="etol-icon.png" type="image/png" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.44.0/dist/tabler-icons.min.css" />
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header>
+    <div class="wrap topbar">
+      <a class="brand" href="index.html" aria-label="eTOL SmartPay home">
+        <img src="etol-icon.png" class="brandIcon" alt="" />
+        <div class="brandText"><div class="brandName">eTOL SmartPay</div></div>
+      </a>
+      <button class="nav-toggle" aria-label="Menu openen" aria-controls="mainNav" aria-expanded="false" id="navToggle" type="button">
+        <i class="ti ti-menu-2" aria-hidden="true"></i>
+      </button>
+      <nav class="nav" id="mainNav" aria-label="Hoofdnavigatie">
+        <a class="chip" href="index.html">Home</a>
+        <a class="chip" href="index.html#how">Hoe werkt het</a>
+        <a class="chip" href="index.html#idea">Over de app</a>
+        <a class="chip" href="index.html#screenshots">Screenshots</a>
+        <a class="chip" href="index.html#faq">FAQ</a>
+        <a class="chip" href="privacy.html">Privacybeleid</a>
+        <a class="chip" href="sponsors.html" aria-current="page">Steun de app</a>
+        <a class="chip" href="index.html#download">Download</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap support-page">
+    <div class="support-intro">
+      <h1>Steun eTOL SmartPay</h1>
+      <p>eTOL SmartPay is gratis, zonder advertenties of verplicht abonnement. Met steun voor de ontwikkeling kunnen we de app blijven verbeteren en de iPhone-versie verder ontwikkelen.</p>
+    </div>
+    <section class="support-section" aria-labelledby="contributions-title">
+      <h2 id="contributions-title">Vrijwillige bijdragen</h2>
+      <p>Wil je als gebruiker bijdragen aan de ontwikkeling? Een mogelijkheid om een vrijwillige bijdrage te geven wordt voorbereid. Er is op dit moment nog geen online donatiemogelijkheid.</p>
+      <p>De app blijft gratis te gebruiken, ook zonder bijdrage.</p>
+    </section>
+    <section class="support-section support-layout" aria-labelledby="sponsors-title">
+      <div>
+        <h2 id="sponsors-title">Zakelijke sponsoring</h2>
+        <p>Wil je als bedrijf de ontwikkeling ondersteunen? Vertel ons wie je bent en wat je in gedachten hebt. Samen bespreken we wat passend is.</p>
+      </div>
+      <form id="sponsor-contact" class="contact-form" action="https://formspree.io/f/myekynyw" method="POST" aria-label="Contact over sponsoring">
+        <div class="contact-field">
+          <label for="contact-name">Naam</label>
+          <input id="contact-name" name="name" type="text" autocomplete="name" maxlength="100" required />
+        </div>
+        <div class="contact-field">
+          <label for="contact-email">E-mailadres</label>
+          <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required />
+        </div>
+        <div class="contact-field">
+          <label for="contact-company">Bedrijf (optioneel)</label>
+          <input id="contact-company" name="company" type="text" autocomplete="organization" maxlength="150" />
+        </div>
+        <div class="contact-field">
+          <label for="contact-message">Bericht</label>
+          <textarea id="contact-message" name="message" rows="6" maxlength="3000" required></textarea>
+        </div>
+        <div class="contact-honeypot" aria-hidden="true">
+          <label for="contact-check">Laat dit veld leeg</label>
+          <input id="contact-check" type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+        </div>
+        <input type="hidden" name="_subject" value="eTOL SmartPay — sponsoring" />
+        <p class="contact-note">Je bericht wordt via Formspree verwerkt en doorgestuurd, zodat we je kunnen antwoorden. Na verzenden opent de beveiligde verzendpagina voor de spamcontrole en bevestiging. Lees het <a href="privacy.html#websitecontact">privacybeleid</a>.</p>
+        <button class="btn" type="submit"><i class="ti ti-send" aria-hidden="true"></i>Bericht versturen</button>
+        <p id="contact-status" class="contact-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+    <footer>
+      <div class="fineprint">
+        <div><strong>Disclaimer</strong>: eTOL SmartPay is een onofficiële betaalassistent en staat los van de officiële e-TOL organisatie. Je blijft zelf verantwoordelijk voor tijdige tolbetaling.</div>
+        <div>© 2026 eTOL SmartPay</div>
+        <div class="footerLinks">
+          <a href="index.html">Home</a><span>•</span>
+          <a href="privacy.html">Privacybeleid</a><span>•</span>
+          <a href="https://play.google.com/store/apps/details?id=com.etol.smartpay" target="_blank" rel="noopener noreferrer">Download voor Android</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
