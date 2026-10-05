@@ -69,6 +69,8 @@ Dit is een statische GitHub Pages-website, zonder buildstap. Open `index.html` l
 - Websitecontact wordt ook in de Formspree-inbox verwerkt en opgeslagen. De privacytekst maakt onderscheid tussen deze berichten en de lokale appgeschiedenis.
 - De sponsorroute gebruikt expliciet `sponsors.html`, zodat ook directe links op GitHub Pages werken zonder speciale rewrite-configuratie.
 
+De functiepoll onder **In ontwikkeling** biedt drie ideeën: geplande-ritherinneringen, een tolkostenbudget en zakelijk/privé-labels. Dit zijn voorstellen, geen toegezegde functies. Eén keuze per inzending wordt met het onderwerp `eTOL SmartPay — functiepoll` naar hetzelfde Formspree-endpoint verstuurd, zonder naam of e-mailadres. De stemmen staan in de Formspree-inbox; er is geen openbare totaalteller of gegarandeerde één-stem-per-persoon-controle. Stemmen tellen mee voor de inzendlimiet van het Formspree-account. Beide formulieren gebruiken `data-formspree-form` voor dezelfde dubbele-verzendbeveiliging en herstel bij terugkeer.
+
 Betaal binnen 3 dagen na een passage. Optionele herinneringen volgen na 24, 48 en 68 uur; het laatste moment is 4 uur vóór de betaaltermijn. Detectie en bezorging van meldingen blijven afhankelijk van toestelinstellingen en ontvangst.
 
 Het blok **In ontwikkeling** op de homepage houdt toekomstige functies apart van de beschikbare Android-functionaliteit. Vooruitbetalen is in testfase, geen afgeronde functie. De iPhone-versie is in ontwikkeling, nog niet beschikbaar in de App Store. Presenteer deze onderdelen niet als reeds beschikbare functies in metadata of de FAQ.

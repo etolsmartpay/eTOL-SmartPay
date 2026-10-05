@@ -34,10 +34,9 @@
     mobile.addEventListener('change', closeMenu);
   }
 
-  const form = document.getElementById('sponsor-contact');
-  if (form) {
+  document.querySelectorAll('[data-formspree-form]').forEach(function (form) {
     const button = form.querySelector('button[type="submit"]');
-    const status = document.getElementById('contact-status');
+    const status = form.querySelector('[role="status"]');
     let submitting = false;
     form.addEventListener('submit', function (event) {
       if (submitting) {
@@ -55,5 +54,5 @@
       form.removeAttribute('aria-busy');
       status.textContent = '';
     });
-  }
+  });
 })();

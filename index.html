@@ -525,6 +525,35 @@
             </li>
           </ul>
         </aside>
+        <section class="feature-poll" aria-labelledby="poll-title">
+          <h2 id="poll-title">Toekomstige functies</h2>
+          <form id="feature-poll" action="https://formspree.io/f/myekynyw" method="POST" data-formspree-form>
+            <fieldset>
+              <legend>Welke extra functie zou jij graag zien?</legend>
+              <label class="poll-option">
+                <input type="radio" name="feature_request" value="Herinneringen voor geplande ritten" required />
+                <span><strong>Herinneringen voor geplande ritten</strong><span>Een melding op een zelf gekozen dag of tijd.</span></span>
+              </label>
+              <label class="poll-option">
+                <input type="radio" name="feature_request" value="Maandbudget voor tolkosten" required />
+                <span><strong>Maandbudget voor tolkosten</strong><span>Een waarschuwing als je ingestelde budget nadert.</span></span>
+              </label>
+              <label class="poll-option">
+                <input type="radio" name="feature_request" value="Zakelijk of privé labelen" required />
+                <span><strong>Ritten als zakelijk of privé labelen</strong><span>Meer overzicht voor je administratie.</span></span>
+              </label>
+            </fieldset>
+            <div class="contact-honeypot" aria-hidden="true">
+              <label for="poll-check">Laat dit veld leeg</label>
+              <input id="poll-check" name="_gotcha" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+            <input type="hidden" name="_subject" value="eTOL SmartPay — functiepoll" />
+            <input type="hidden" name="poll" value="Toekomstige functies — oktober 2026" />
+            <button class="btn" type="submit"><i class="ti ti-check" aria-hidden="true"></i>Stem versturen</button>
+            <p class="contact-note">Ideeën, geen toezeggingen. Stemmen verloopt via Formspree, zonder naam of e-mailadres te vragen. <a href="privacy.html#websitecontact">Privacybeleid</a></p>
+            <p class="contact-status" role="status" aria-live="polite"></p>
+          </form>
+        </section>
         <h2>Functionaliteiten</h2>
         <div class="feature-grid">
 
