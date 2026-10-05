@@ -480,6 +480,8 @@ footer {
   flex-shrink: 0;
 }
 @media (max-width: 1100px) {
+  body { padding-top: var(--headerH); }
+  header { position: fixed; left: 0; right: 0; }
   .nav-toggle { display: inline-grid; place-items: center; }
   .nav {
     position: absolute;
