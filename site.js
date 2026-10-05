@@ -34,6 +34,84 @@
     mobile.addEventListener('change', closeMenu);
   }
 
+  const poll = document.getElementById('feature-poll');
+  if (poll) {
+    const projectUrl = 'https://pqblykfmvmqmsmqsfsld.supabase.co';
+    const publicKey = 'sb_publishable_uXvsXMwogAeBICKJQJIC2g_XJqbs0pP';
+    const turnstileSiteKey = '0x4AAAAAAFOZjgAjfPbONu83';
+    const button = poll.querySelector('button[type="submit"]');
+    const status = poll.querySelector('[role="status"]');
+    let token = '';
+    let submitting = false;
+    let complete = false;
+    let pendingVote = null;
+    let widget;
+
+    poll.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      if (submitting || complete || !token || !poll.reportValidity()) return;
+      if (poll.querySelector('[name="_gotcha"]').value) return;
+      const choice = poll.querySelector('[name="feature_request"]:checked').value;
+      if (!pendingVote || pendingVote.choice !== choice) {
+        pendingVote = { id: crypto.randomUUID(), choice: choice };
+      }
+      submitting = true;
+      button.disabled = true;
+      poll.setAttribute('aria-busy', 'true');
+      status.textContent = 'Stem versturen…';
+      const controller = new AbortController();
+      const timeout = setTimeout(function () { controller.abort(); }, 15000);
+      try {
+        const response = await fetch(projectUrl + '/functions/v1/feature-poll', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', apikey: publicKey },
+          body: JSON.stringify({ ...pendingVote, token: token }),
+          signal: controller.signal
+        });
+        if (!response.ok) throw new Error('Vote rejected');
+        const result = await response.json();
+        if (result.saved !== true) throw new Error('Vote not confirmed');
+        complete = true;
+        poll.querySelector('fieldset').disabled = true;
+        status.textContent = 'Bedankt! Uw stem is opgeslagen.';
+      } catch (_) {
+        status.textContent = 'Uw stem kon niet worden bevestigd. Probeer het opnieuw.';
+      } finally {
+        clearTimeout(timeout);
+        submitting = false;
+        token = '';
+        poll.removeAttribute('aria-busy');
+        if (!complete) window.turnstile.reset(widget);
+      }
+    });
+
+    if (turnstileSiteKey) {
+      const script = document.createElement('script');
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+      script.onload = function () {
+        widget = window.turnstile.render('#poll-verification', {
+          sitekey: turnstileSiteKey,
+          action: 'feature_poll',
+          theme: 'dark',
+          size: 'compact',
+          callback: function (value) {
+            token = value;
+            button.disabled = submitting || complete;
+            if (!submitting && !complete && !pendingVote) status.textContent = '';
+          },
+          'expired-callback': function () { token = ''; button.disabled = true; },
+          'error-callback': function () {
+            token = '';
+            button.disabled = true;
+            status.textContent = 'Spamcontrole niet beschikbaar. Probeer later opnieuw.';
+          }
+        });
+      };
+      script.onerror = function () { status.textContent = 'Spamcontrole niet beschikbaar. Probeer later opnieuw.'; };
+      document.head.appendChild(script);
+    }
+  }
+
   document.querySelectorAll('[data-formspree-form]').forEach(function (form) {
     const button = form.querySelector('button[type="submit"]');
     const status = form.querySelector('[role="status"]');

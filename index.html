@@ -527,7 +527,7 @@
         </aside>
         <section class="feature-poll" aria-labelledby="poll-title">
           <h2 id="poll-title">Toekomstige functies</h2>
-          <form id="feature-poll" action="https://formspree.io/f/myekynyw" method="POST" data-formspree-form>
+          <form id="feature-poll">
             <fieldset>
               <legend>Welke extra functie zou jij graag zien?</legend>
               <label class="poll-option">
@@ -547,11 +547,11 @@
               <label for="poll-check">Laat dit veld leeg</label>
               <input id="poll-check" name="_gotcha" type="text" tabindex="-1" autocomplete="off" />
             </div>
-            <input type="hidden" name="_subject" value="eTOL SmartPay — functiepoll" />
-            <input type="hidden" name="poll" value="Toekomstige functies — oktober 2026" />
-            <button class="btn" type="submit"><i class="ti ti-check" aria-hidden="true"></i>Stem versturen</button>
-            <p class="contact-note">Ideeën, geen toezeggingen. Stemmen verloopt via Formspree, zonder naam of e-mailadres te vragen. <a href="privacy.html#websitecontact">Privacybeleid</a></p>
-            <p class="contact-status" role="status" aria-live="polite"></p>
+            <div id="poll-verification"></div>
+            <button class="btn" type="submit" disabled><i class="ti ti-check" aria-hidden="true"></i>Stem versturen</button>
+            <p class="contact-note">Ideeën, geen toezeggingen. Stemmen verloopt via Supabase, zonder naam of e-mailadres te vragen. <a href="privacy.html#websitecontact">Privacybeleid</a></p>
+            <p class="contact-status" role="status" aria-live="polite">De poll wordt ingesteld; stemmen is nog niet beschikbaar.</p>
+            <noscript><p>Stemmen vereist JavaScript.</p></noscript>
           </form>
         </section>
         <h2>Functionaliteiten</h2>
