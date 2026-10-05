@@ -557,7 +557,7 @@
             <p class="contact-status" role="status" aria-live="polite">De poll wordt ingesteld; stemmen is nog niet beschikbaar.</p>
             <noscript><p>Stemmen vereist JavaScript.</p></noscript>
           </form>
-          <section class="poll-results" aria-labelledby="poll-results-title">
+          <section class="poll-results" aria-labelledby="poll-results-title" hidden>
             <div class="poll-results-heading">
               <h3 id="poll-results-title">Tussenstand</h3>
               <button id="poll-results-refresh" type="button" title="Uitslag vernieuwen" aria-label="Uitslag vernieuwen"><i class="ti ti-refresh" aria-hidden="true"></i></button>
@@ -701,7 +701,7 @@
               <i class="ti ti-bell-ringing feature-icon"></i>
               <div>
                 <div class="feature-text">Betaalherinneringen</div>
-                <div class="feature-sub">Optionele herinneringen na 24 en 48 uur, met een laatste waarschuwing na 68 uur — 4 uur vóór de betaaltermijn verloopt</div>
+                <div class="feature-sub">Bij onbetaalde passages na 24, 48 en 68 uur. Deze tijdstippen staan vast en zijn niet instelbaar; de laatste waarschuwing is 4 uur vóór de betaaltermijn verloopt.</div>
               </div>
             </div>
             <div class="feature-row">
@@ -773,7 +773,7 @@
 
       <div class="card" style="margin-top:14px; border-left: 3px solid #a78bfa;">
         <h3 class="cardTitle">③ Klaar — A24 tol betaald</h3>
-        <p>Controleer de betaalbevestiging. Met optionele GPS-bewaking krijg je een melding bij een gedetecteerde A24-passage. Voor onbetaalde passages kun je betaalherinneringen inschakelen.</p>
+        <p>Controleer de betaalbevestiging. Met optionele GPS-bewaking krijg je een melding bij een gedetecteerde A24-passage. Bij onbetaalde passages kun je betaalherinneringen ontvangen na 24, 48 en 68 uur. Deze tijdstippen zijn niet instelbaar.</p>
       </div>
 
       </div>
@@ -912,7 +912,7 @@
 
       <div class="card" style="margin-top:14px; border-left: 3px solid #3b82f6;">
         <h3 class="cardTitle">Welke betaalherinneringen kan ik ontvangen?</h3>
-        <p>Voor een gedetecteerde, onbetaalde passage kun je herinneringen inschakelen na 24 en 48 uur. Na 68 uur volgt een laatste waarschuwing, 4 uur vóór de betaaltermijn verloopt. Ontvangst hangt af van detectie, meldingsrechten en je telefooninstellingen.</p>
+        <p>Voor een gedetecteerde, onbetaalde passage kun je herinneringen ontvangen na 24, 48 en 68 uur. Deze tijdstippen staan vast en zijn niet instelbaar. De laatste waarschuwing is 4 uur vóór de betaaltermijn verloopt. Ontvangst hangt af van detectie, meldingsrechten en je telefooninstellingen.</p>
       </div>
 
       </div>
@@ -948,7 +948,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "eTOL SmartPay",
-    "description": "Gratis Android-app voor A24-tolbetalingen via iDEAL. Met meerdere kentekens en optionele betaalherinneringen. Geen account nodig. Een iPhone-versie is in ontwikkeling.",
+    "description": "Gratis Android-app voor A24-tolbetalingen via iDEAL. Met meerdere kentekens en betaalherinneringen op vaste tijdstippen bij onbetaalde passages. Geen account nodig. Een iPhone-versie is in ontwikkeling.",
     "url": "https://etol-smartpay.nl/",
     "operatingSystem": "Android 8.0+",
     "applicationCategory": "UtilitiesApplication",
@@ -1014,7 +1014,7 @@
         "name": "Welke betaalherinneringen kan ik ontvangen?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Voor een gedetecteerde, onbetaalde passage kun je herinneringen inschakelen na 24 en 48 uur. Na 68 uur volgt een laatste waarschuwing, 4 uur vóór de betaaltermijn verloopt. Ontvangst hangt af van detectie, meldingsrechten en je telefooninstellingen."
+          "text": "Voor een gedetecteerde, onbetaalde passage kun je herinneringen ontvangen na 24, 48 en 68 uur. Deze tijdstippen staan vast en zijn niet instelbaar. De laatste waarschuwing is 4 uur vóór de betaaltermijn verloopt. Ontvangst hangt af van detectie, meldingsrechten en je telefooninstellingen."
         }
       }
     ]
