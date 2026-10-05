@@ -69,40 +69,7 @@ Dit is een statische GitHub Pages-website, zonder buildstap. Open `index.html` l
 - Websitecontact wordt ook in de Formspree-inbox verwerkt en opgeslagen. De privacytekst maakt onderscheid tussen deze berichten en de lokale appgeschiedenis.
 - De sponsorroute gebruikt expliciet `sponsors.html`, zodat ook directe links op GitHub Pages werken zonder speciale rewrite-configuratie.
 
-De functiepoll onder **In ontwikkeling** biedt vier ideeën: geplande-ritherinneringen, een tolkostenbudget, zakelijk/privé-labels en tolbadges verdienen. De badges zijn een speels voorstel voor bestaande ritten, met voorbeeldmijlpalen brons (25), zilver (50), goud (100) en platinum (250). Dit zijn voorstellen, geen toegezegde functies. Stemmen gaan naar Supabase, niet naar Formspree. De openbare tussenstand toont aantallen en afgeronde percentages per keuze, ook vóór stemmen. Door afronding hoeven percentages niet exact tot 100% op te tellen. Er is geen gegarandeerde één-stem-per-persoon-controle. Alleen het sponsorformulier gebruikt `data-formspree-form`.
-
-### Tolbadges als vierde keuze activeren
-
-Voer `supabase/migrations/20261005_feature_poll_badges.sql` uit in SQL Editor. Deze query verruimt uitsluitend de keuzecontrole en behoudt bestaande stemmen en toegangsregels. Deploy daarna de bijgewerkte `supabase/functions/feature-poll/index.ts` opnieuw als `feature-poll` (Verify JWT blijft uit) en publiceer de gewijzigde `index.html`. De uitslagfunctie groepeert ook de nieuwe keuze automatisch; daarvoor is geen aanvullende wijziging nodig. Bij een nieuwe installatie voer je eerst de oorspronkelijke tabelquery uit en daarna deze badges-query.
-
-## Supabase-poll instellen
-
-De websitekoppeling gebruikt `https://pqblykfmvmqmsmqsfsld.supabase.co`. De publishable key en Turnstile-sitekey in `site.js` zijn publiek; plaats daar nooit geheime sleutels.
-
-### Openbare uitslag activeren bij bestaand project
-
-1. Voer uitsluitend de nieuwe query `supabase/migrations/20261005_feature_poll_results.sql` uit in SQL Editor. Voer de oorspronkelijke tabelquery niet opnieuw uit. Deze functie groepeert alle stemmen in de database en geeft alleen keuze/aantal terug. Alleen `service_role` mag deze SQL-functie uitvoeren; individuele rijen blijven afgeschermd.
-2. Vervang de gedeployde `feature-poll` Edge Function door de bijgewerkte `supabase/functions/feature-poll/index.ts` en deploy opnieuw. Verify JWT blijft uit; POST blijft Turnstile vereisen. GET retourneert alleen de gegroepeerde totalen zonder CAPTCHA.
-3. Publiceer `index.html`, `site.js`, `styles.css` en `privacy.html` op GitHub Pages. De uitslag wordt bij openen, na een opgeslagen stem en via de vernieuwknop geladen. Er is geen achtergrondpolling. Netwerkfouten tonen een foutmelding, nooit een fictieve nulstand. Zonder deze serverupdate is de tussenstand tijdelijk niet beschikbaar.
-
-1. Open de Supabase SQL Editor en voer `supabase/migrations/20261005_feature_poll.sql` één keer uit. RLS staat aan en er zijn geen publieke lees- of schrijfpolicies. Alleen de serverfunctie schrijft stemmen.
-2. Maak in Cloudflare Turnstile een widget voor `etol-smartpay.nl` en `www.etol-smartpay.nl` (Managed). Vul de publieke sitekey in bij `turnstileSiteKey` in `site.js`. Gebruik geen testsleutels op de echte website.
-3. Zet de geheime Turnstile-key in Supabase bij Edge Functions → Secrets als `TURNSTILE_SECRET_KEY`. Deel deze niet in chat of git. `SUPABASE_URL` en `SUPABASE_SERVICE_ROLE_KEY` zijn de standaard serveromgevingsvariabelen; ze blijven uitsluitend op de server.
-4. Maak een Edge Function met exact de naam `feature-poll`, gebruik `supabase/functions/feature-poll/index.ts` en deploy. Zet **Verify JWT** uit voor deze functie: publishable keys zijn geen legacy JWT. De functie controleert in plaats daarvan elke stem met Turnstile, inclusief hostname en action. CLI-deploy gebruikt de instelling in `supabase/config.toml`.
-5. Publiceer de website en controleer met één afgesproken teststem of één rij verschijnt in `feature_poll_votes`. Test ook afwijzing van ongeldige keuzes, CAPTCHA-fouten en directe publieke databaseverzoeken. Er is nog geen echte stem verzonden vanuit deze ontwikkelsessie.
-
-De Edge Function accepteert alleen de twee hierboven genoemde productie-origins; lokale `file:`-pagina's kunnen niet echt stemmen. UI-tests mogen aanvragen onderscheppen maar mogen de productiebeveiliging niet omzeilen. Elke inzending bevat een willekeurige UUID; herhalen van dezelfde inzending gebruikt dezelfde UUID zodat de database geen dubbele rij opslaat. Bij een fout blijft de keuze behouden en moet Turnstile opnieuw valideren. Geen namen, e-mails of IP-adressen worden in de stemtabel opgeslagen. Technische providerlogs kunnen wel bestaan.
-
-Bekijk aantallen in de SQL Editor:
-
-```sql
-select choice, count(*) as votes
-from public.feature_poll_votes
-group by choice
-order by votes desc;
-```
-
-Controleer de actuele Supabase- en Turnstile-limieten en eventuele pauzering van inactieve gratis projecten. De frontend toont pas een bevestiging na succesvolle serveropslag; fouten vallen niet terug op Formspree.
+De functiepoll onder **In ontwikkeling** biedt vier ideeën: geplande-ritherinneringen, een tolkostenbudget, zakelijk/privé-labels en tolbadges verdienen. De badges zijn een speels voorstel voor bestaande ritten, met voorbeeldmijlpalen brons (25), zilver (50), goud (100) en platinum (250). Dit zijn voorstellen, geen toegezegde functies. De openbare tussenstand toont aantallen en afgeronde percentages per keuze, ook vóór stemmen. Door afronding hoeven percentages niet exact tot 100% op te tellen. Er is geen gegarandeerde één-stem-per-persoon-controle.
 
 Betaal binnen 3 dagen na een passage. Optionele herinneringen volgen na 24, 48 en 68 uur; het laatste moment is 4 uur vóór de betaaltermijn. Detectie en bezorging van meldingen blijven afhankelijk van toestelinstellingen en ontvangst.
 
