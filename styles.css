@@ -542,6 +542,15 @@ footer {
 .contact-note a { text-decoration: underline; text-underline-offset: 3px; }
 .contact-status { min-height: 24px; font-size: 14px; margin: 0; }
 .contact-honeypot { display: none; }
+.development-updates { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+.development-updates h2 { font-size: 18px; margin: 0 0 16px; letter-spacing: 0; }
+.development-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; }
+.development-item { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; }
+.development-item > i { font-size: 20px; color: var(--muted); padding-top: 2px; }
+.development-item h3 { margin: 0 0 4px; font-size: 14px; letter-spacing: 0; }
+.development-status { font-size: 12px; font-weight: 600; color: var(--muted); }
+.development-status-test { color: #fbbf24; }
+.development-item p { font-size: 13px; line-height: 1.6; margin: 6px 0 0; color: var(--muted); }
 @media (max-width: 640px) {
   .support-page { padding-top: 28px; }
   .support-page h1 { font-size: 30px; }
