@@ -47,11 +47,13 @@
     let pendingVote = null;
     let widget;
 
+    const resultsSection = poll.parentElement.querySelector('.poll-results');
     const resultsStatus = document.getElementById('poll-results-status');
     const resultsList = document.getElementById('poll-results-list');
     const refresh = document.getElementById('poll-results-refresh');
     let resultsRefreshPending = false;
     async function loadResults() {
+      if (!complete) return;
       if (refresh.disabled) {
         resultsRefreshPending = true;
         return;
@@ -107,7 +109,6 @@
       }
     }
     refresh.addEventListener('click', loadResults);
-    loadResults();
 
     poll.addEventListener('submit', async function (event) {
       event.preventDefault();
@@ -136,6 +137,7 @@
         complete = true;
         poll.querySelector('fieldset').disabled = true;
         status.textContent = 'Bedankt! Uw stem is opgeslagen.';
+        resultsSection.hidden = false;
         loadResults();
       } catch (_) {
         status.textContent = 'Uw stem kon niet worden bevestigd. Probeer het opnieuw.';
