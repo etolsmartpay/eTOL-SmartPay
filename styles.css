@@ -525,7 +525,15 @@ footer {
   width: 100%; min-width: 0; padding: 12px;
   border: 1px solid var(--border); border-radius: 6px;
   background: rgba(255,255,255,.05); color: var(--text);
+  color-scheme: dark;
+  -webkit-appearance: none;
+  appearance: none;
   font: inherit; font-size: 16px;
+}
+.contact-field :is(input, textarea):is(:autofill, :-webkit-autofill) {
+  -webkit-text-fill-color: var(--text);
+  caret-color: var(--text);
+  box-shadow: 0 0 0 1000px var(--bg1) inset;
 }
 .contact-field textarea { min-height: 150px; resize: vertical; }
 .contact-form .btn { justify-self: start; gap: 8px; }
