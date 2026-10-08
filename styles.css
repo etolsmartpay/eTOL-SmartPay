@@ -250,14 +250,16 @@ h1 {
 .btn small { font-size: 12px; font-weight: 500; opacity: .78; }
 
 .downloadBadgeLink {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: min(320px, 100%);
   height: auto;
   line-height: 0;
   border: 1px solid var(--border);
   border-radius: 18px;
   overflow: hidden;
-  background: rgba(255,255,255,.05);
+  background: #021832;
   box-shadow: 0 12px 28px rgba(0,0,0,.25);
   transition: transform .18s ease, box-shadow .18s ease;
 }
