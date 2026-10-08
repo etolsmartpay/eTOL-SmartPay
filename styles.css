@@ -606,7 +606,6 @@ footer {
   h1           { letter-spacing: -.5px; }
   .ctaRow      { flex-direction: column; align-items: stretch; }
   .downloadBadgeLink { width: 100%; justify-content: center; }
-  .downloadBadge { width: min(100%, 320px); }
   .ctaRow .btn { justify-content: center; }
   .panelShot   { height: 50px; }
   .panelLogo   { height: 190px; }
