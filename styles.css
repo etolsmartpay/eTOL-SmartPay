@@ -376,12 +376,11 @@ h2 { margin: 0; font-size: 17px; letter-spacing: -.2px; }
   border-bottom: 1px solid var(--border);
 }
 .news-source { display: grid; justify-items: start; gap: 8px; }
-.news-source-label {
-  display: grid; place-items: center;
-  width: 64px; height: 48px;
-  border-radius: 4px;
-  background: #c71924; color: #fff;
-  font-size: 24px; font-weight: 700; line-height: 1;
+.news-source-logo {
+  display: block;
+  width: 64px; height: 64px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 .news-source-edition { color: var(--muted); font-size: 12px; }
 .news-copy { min-width: 0; }
