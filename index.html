@@ -413,32 +413,46 @@
     .storeBadges .downloadBadgeLink {
       width: 100%;
     }
-    .appStoreBadge {
-      display: flex;
-      width: 100%;
+    .downloadHeading {
+      margin: 0 0 6px;
+      color: var(--text);
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(28px, 4vw, 34px);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -.3px;
+    }
+    .storeBadges .appStoreLink {
+      background: #021832;
+    }
+    .appStoreLink .downloadBadge {
       aspect-ratio: 1281 / 384;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      background: #000;
-      color: #fff;
-      line-height: 1.1;
+      object-fit: contain;
     }
-    .appStoreBadgeIcon {
-      font-size: clamp(38px, 12vw, 54px);
-      line-height: 1;
-    }
-    .appStoreBadgeText {
-      display: flex;
+    #download {
       flex-direction: column;
       align-items: flex-start;
-      gap: 3px;
-      font-size: 15px;
     }
-    .appStoreBadgeText strong {
-      font-size: 29px;
-      font-weight: 600;
-      letter-spacing: -1px;
+    #download .screenshotsLink {
+      width: min(320px, 100%);
+      justify-content: flex-start;
+      padding: 14px 18px;
+      border-color: var(--accent2Glow);
+      background: linear-gradient(135deg, var(--accentGlow), rgba(255,255,255,.04));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+      white-space: normal;
+    }
+    #download .screenshotsLink:hover {
+      background: linear-gradient(135deg, var(--accent2Glow), rgba(255,255,255,.09));
+    }
+    .screenshotsLink > .ti-photo {
+      color: var(--accent2);
+      font-size: 22px;
+    }
+    .screenshotsLink > .ti-arrow-down {
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 18px;
     }
     @media (max-width: 640px) {
       .idea-section {
@@ -516,16 +530,12 @@
 
         <div class="ctaRow" id="download">
           <div class="storeBadges">
-            <a class="downloadBadgeLink" href="https://apps.apple.com/nl/app/id6824543394"
+            <h2 class="downloadHeading">Download gratis</h2>
+            <a class="downloadBadgeLink appStoreLink" href="https://apps.apple.com/nl/app/id6824543394"
                target="_blank" rel="noopener noreferrer" aria-label="Downloaden in de App Store">
-              <span class="appStoreBadge">
-                <i class="ti ti-brand-apple appStoreBadgeIcon" aria-hidden="true"></i>
-                <span class="appStoreBadgeText">
-                  <span>Download in de</span>
-                  <strong>App Store</strong>
-                </span>
-              </span>
+              <img class="downloadBadge" src="app-store-badge.svg" alt="Download in de App Store" loading="lazy" />
             </a>
+            <p class="note" style="margin:0;font-size:.75rem">iOS 15 of nieuwer vereist.</p>
 
             <a class="downloadBadgeLink" href="https://play.google.com/store/apps/details?id=com.etol.smartpay"
                target="_blank" rel="noopener noreferrer" aria-label="Downloaden via Google Play">
@@ -533,14 +543,12 @@
             </a>
           </div>
 
-          <a class="btn" href="#screenshots">Bekijk screenshots</a>
+          <a class="btn screenshotsLink" href="#screenshots">
+            <i class="ti ti-photo" aria-hidden="true"></i>
+            <span>Bekijk screenshots</span>
+            <i class="ti ti-arrow-down" aria-hidden="true"></i>
+          </a>
         </div>
-
-        <p class="note">
-          <strong>iPhone:</strong> beschikbaar in de App Store.<br>
-          <strong>Android:</strong> beschikbaar via Google Play.<br>
-          <span style="font-size:.9em;opacity:.8">Voor iPhone is iOS 15 of nieuwer vereist.</span>
-        </p>
 
         <img
           src="screenshots/SmartPay_Functies.png"
@@ -557,20 +565,20 @@
           <h2 id="development-title">Nu &amp; binnenkort</h2>
           <ul class="development-list">
             <li class="development-item">
+              <i class="ti ti-brand-apple" aria-hidden="true"></i>
+              <div>
+                <h3>eTOL SmartPay voor iPhone (iOS)</h3>
+                <span class="development-status">Nu beschikbaar</span>
+                <p>Download de app in de App Store en houd je A24-tolritten en betalingen overzichtelijk bij.</p>
+                <p><a href="https://apps.apple.com/nl/app/id6824543394" target="_blank" rel="noopener noreferrer">Bekijk eTOL SmartPay in de App Store</a></p>
+              </div>
+            </li>
+            <li class="development-item">
               <i class="ti ti-calendar-check" aria-hidden="true"></i>
               <div>
                 <h3>Vooruitbetalen</h3>
                 <span class="development-status">Nu beschikbaar op Android</span>
                 <p>Betaal vooraf via iDEAL voor 1 tot 4 ritten met hetzelfde kenteken, tot 7 dagen na betaling. Met optionele GPS-detectie koppelt de app beschikbare vooruitbetaalde ritten aan toekomstige passages.</p>
-              </div>
-            </li>
-            <li class="development-item">
-              <i class="ti ti-brand-apple" aria-hidden="true"></i>
-              <div>
-                <h3>eTOL SmartPay voor iPhone</h3>
-                <span class="development-status">Nu beschikbaar</span>
-                <p>Download de app in de App Store en houd je A24-tolritten en betalingen overzichtelijk bij.</p>
-                <p><a href="https://apps.apple.com/nl/app/id6824543394" target="_blank" rel="noopener noreferrer">Bekijk eTOL SmartPay in de App Store</a></p>
               </div>
             </li>
           </ul>
