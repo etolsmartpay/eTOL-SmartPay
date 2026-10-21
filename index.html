@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <title>eTOL SmartPay — tol betalen op de A24</title>
-  <meta name="description" content="Betaal A24-tol via iDEAL, nu ook tot 7 dagen vooruit. eTOL SmartPay is gratis voor Android, met meerdere kentekens en herinneringen. iOS in ontwikkeling." />
+  <meta name="description" content="Betaal A24-tol via iDEAL met eTOL SmartPay. Gratis beschikbaar voor iPhone en Android, met kentekenbeheer, rittenoverzicht en herinneringen." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://etol-smartpay.nl/" />
   <link rel="icon" href="etol-icon.png" type="image/png" />
@@ -17,7 +17,7 @@
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://etol-smartpay.nl/" />
   <meta property="og:title"       content="eTOL SmartPay — tol betalen op de A24" />
-  <meta property="og:description" content="Gratis voor Android: A24-tol betalen via iDEAL, tot 7 dagen vooruitbetalen en betaalherinneringen. Geen account nodig. iOS in ontwikkeling." />
+  <meta property="og:description" content="Betaal A24-tol via iDEAL met eTOL SmartPay. Gratis beschikbaar voor iPhone en Android, met kentekenbeheer, rittenoverzicht en herinneringen." />
   <meta property="og:image"       content="https://etol-smartpay.nl/screenshots/SmartPay_1.jpg" />
   <meta property="og:locale"      content="nl_NL" />
   <meta property="og:site_name"   content="eTOL SmartPay" />
@@ -25,7 +25,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content="eTOL SmartPay — tol betalen op de A24" />
-  <meta name="twitter:description" content="A24-tol betalen via iDEAL, nu ook tot 7 dagen vooruit. Gratis voor Android, met betaalherinneringen. iOS in ontwikkeling." />
+  <meta name="twitter:description" content="Betaal A24-tol via iDEAL met eTOL SmartPay. Gratis beschikbaar voor iPhone en Android, met kentekenbeheer, rittenoverzicht en herinneringen." />
   <meta name="twitter:image"       content="https://etol-smartpay.nl/screenshots/SmartPay_1.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -404,6 +404,42 @@
       color: var(--muted, #94a3b8);
       margin-bottom: 0.5rem;
     }
+    .storeBadges {
+      display: flex;
+      width: min(320px, 100%);
+      flex-direction: column;
+      gap: 12px;
+    }
+    .storeBadges .downloadBadgeLink {
+      width: 100%;
+    }
+    .appStoreBadge {
+      display: flex;
+      width: 100%;
+      aspect-ratio: 1281 / 384;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: #000;
+      color: #fff;
+      line-height: 1.1;
+    }
+    .appStoreBadgeIcon {
+      font-size: clamp(38px, 12vw, 54px);
+      line-height: 1;
+    }
+    .appStoreBadgeText {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3px;
+      font-size: 15px;
+    }
+    .appStoreBadgeText strong {
+      font-size: 29px;
+      font-weight: 600;
+      letter-spacing: -1px;
+    }
     @media (max-width: 640px) {
       .idea-section {
         padding: 24px;
@@ -479,17 +515,31 @@
         </div>
 
         <div class="ctaRow" id="download">
-          <a class="downloadBadgeLink" href="https://play.google.com/store/apps/details?id=com.etol.smartpay"
-             target="_blank" rel="noopener noreferrer" aria-label="Downloaden via Google Play">
-            <img class="downloadBadge" src="Designer.png" alt="Get it on Google Play" loading="lazy" />
-          </a>
+          <div class="storeBadges">
+            <a class="downloadBadgeLink" href="https://apps.apple.com/nl/app/id6824543394"
+               target="_blank" rel="noopener noreferrer" aria-label="Downloaden in de App Store">
+              <span class="appStoreBadge">
+                <i class="ti ti-brand-apple appStoreBadgeIcon" aria-hidden="true"></i>
+                <span class="appStoreBadgeText">
+                  <span>Download in de</span>
+                  <strong>App Store</strong>
+                </span>
+              </span>
+            </a>
+
+            <a class="downloadBadgeLink" href="https://play.google.com/store/apps/details?id=com.etol.smartpay"
+               target="_blank" rel="noopener noreferrer" aria-label="Downloaden via Google Play">
+              <img class="downloadBadge" src="Designer.png" alt="Get it on Google Play" loading="lazy" />
+            </a>
+          </div>
 
           <a class="btn" href="#screenshots">Bekijk screenshots</a>
         </div>
 
         <p class="note">
+          <strong>iPhone:</strong> beschikbaar in de App Store.<br>
           <strong>Android:</strong> beschikbaar via Google Play.<br>
-          <strong>iOS:</strong> in ontwikkeling — nog niet beschikbaar.
+          <span style="font-size:.9em;opacity:.8">Voor iPhone is iOS 15 of nieuwer vereist.</span>
         </p>
 
         <img
@@ -517,10 +567,10 @@
             <li class="development-item">
               <i class="ti ti-brand-apple" aria-hidden="true"></i>
               <div>
-                <h3>eTOL SmartPay voor iOS</h3>
-                <span class="development-status">In ontwikkeling</span>
-                <p>De iOS-versie gaat naar verwachting eind oktober de TestFlight-testfase in. We testen verder in november. De app is nog niet beschikbaar in de App Store; een releasedatum volgt later.</p>
-                <p><strong>TestFlight-testfase:</strong> eind oktober en november 2026.</p>
+                <h3>eTOL SmartPay voor iPhone</h3>
+                <span class="development-status">Nu beschikbaar</span>
+                <p>Download de app in de App Store en houd je A24-tolritten en betalingen overzichtelijk bij.</p>
+                <p><a href="https://apps.apple.com/nl/app/id6824543394" target="_blank" rel="noopener noreferrer">Bekijk eTOL SmartPay in de App Store</a></p>
               </div>
             </li>
           </ul>
@@ -930,8 +980,8 @@
       </div>
 
       <div class="card" style="margin-top:14px; border-left: 3px solid #8b5cf6;">
-        <h3 class="cardTitle">🍎 Wanneer komt iOS uit?</h3>
-        <p>De iOS-versie gaat naar verwachting eind oktober 2026 de TestFlight-fase in. We testen verder in november. De app is nog niet beschikbaar in de App Store; een releasedatum volgt later. De Android-app is nu beschikbaar via Google Play.</p>
+        <h3 class="cardTitle">🍎 Is eTOL SmartPay beschikbaar voor iPhone?</h3>
+        <p>Ja. eTOL SmartPay is beschikbaar in de App Store voor iPhone en via Google Play voor Android. Gebruik de knoppen bovenaan deze pagina om de app te downloaden. Voor iPhone is iOS 15 of nieuwer vereist.</p>
       </div>
 
       <div class="card" style="margin-top:14px; border-left: 3px solid #06b6d4;">
@@ -982,9 +1032,9 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "eTOL SmartPay",
-    "description": "Gratis Android-app voor A24-tolbetalingen via iDEAL, nu ook vooruitbetalen voor 1 tot 4 ritten per betaling met hetzelfde kenteken, tot 7 dagen na betaling. Met meerdere kentekens en betaalherinneringen op vaste tijdstippen bij onbetaalde passages. Geen account nodig. De iOS-versie gaat naar verwachting eind oktober en november 2026 de TestFlight-testfase in en is nog niet beschikbaar in de App Store.",
+    "description": "Gratis app voor iPhone en Android voor A24-tolbetalingen via iDEAL, met meerdere kentekens, rittenoverzicht en betaalherinneringen. Geen account nodig.",
     "url": "https://etol-smartpay.nl/",
-    "operatingSystem": "Android 8.0+",
+    "operatingSystem": "iOS 15+, Android 8.0+",
     "applicationCategory": "UtilitiesApplication",
     "inLanguage": "nl",
     "offers": {
@@ -1037,10 +1087,10 @@
       },
       {
         "@type": "Question",
-        "name": "Wanneer komt iOS uit?",
+        "name": "Is eTOL SmartPay beschikbaar voor iPhone?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "De iOS-versie gaat naar verwachting eind oktober 2026 de TestFlight-fase in. We testen verder in november. De app is nog niet beschikbaar in de App Store; een releasedatum volgt later. De Android-app is nu beschikbaar via Google Play."
+          "text": "Ja. eTOL SmartPay is beschikbaar in de App Store voor iPhone en via Google Play voor Android. Voor iPhone is iOS 15 of nieuwer vereist."
         }
       },
       {
