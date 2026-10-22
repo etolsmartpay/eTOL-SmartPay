@@ -111,7 +111,7 @@ header {
 
 /* Nav — scrollable op mobiel */
 .nav {
-  display: flex; align-items: center; gap: 8px;
+  display: flex; align-items: center; gap: 4px;
   color: var(--muted);
   font-size: 13px;
   overflow-x: auto;
@@ -127,20 +127,62 @@ header {
 
 .chip {
   white-space: nowrap;
-  padding: 7px 13px;
-  min-height: 36px;
+  padding: 0 11px;
+  min-height: 38px;
   display: inline-flex; align-items: center;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: rgba(255,255,255,.05);
-  transition: background .16s, transform .16s;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--muted);
+  font-weight: 500;
+  transition: color .16s, background .16s, border-color .16s, transform .16s;
   flex-shrink: 0;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
 }
-.chip:hover  { background: rgba(255,255,255,.11); transform: translateY(-1px); }
-.chip:active { background: rgba(255,255,255,.16); transform: scale(.97); }
+.chip:hover,
+.chip[aria-current="page"] {
+  color: var(--text);
+  background: rgba(255,255,255,.07);
+}
+.chip[aria-current="page"] { border-color: var(--border); }
+.chip:focus-visible,
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--accent2);
+  outline-offset: 3px;
+}
+.chip:active { background: rgba(255,255,255,.12); transform: scale(.98); }
+.nav .chip[href$="#download"] {
+  color: #fff;
+  background: var(--accent);
+  border-color: transparent;
+  font-weight: 600;
+  box-shadow: 0 4px 14px var(--accentGlow);
+}
+.nav .chip[href$="#download"]:hover { filter: brightness(1.08); }
+
+@media (min-width: 1101px) {
+  .nav .chip:not([href$="#download"]) {
+    min-height: 40px;
+    padding: 0 12px;
+    border-color: rgba(255,255,255,.11);
+    background: rgba(255,255,255,.045);
+    color: rgba(255,255,255,.88);
+    font-size: 13.5px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.035);
+  }
+  .nav .chip:not([href$="#download"]):hover,
+  .nav .chip:not([href$="#download"])[aria-current="page"] {
+    border-color: var(--accent);
+    background: var(--accentGlow);
+    color: #fff;
+    transform: translateY(-1px);
+  }
+  .nav .chip[href$="#download"] {
+    min-height: 40px;
+    padding: 0 14px;
+  }
+}
 
 /* ─── Hero ──────────────────────────────────────────────────────────────────── */
 .hero {
@@ -537,13 +579,14 @@ footer {
     top: var(--headerH);
     right: 16px;
     flex-direction: column;
+    align-items: stretch;
     background: rgba(12,18,32,.98);
     backdrop-filter: blur(16px);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 12px;
-    gap: 6px;
-    max-width: calc(100vw - 32px);
+    padding: 10px;
+    gap: 3px;
+    width: min(320px, calc(100vw - 32px));
     max-height: calc(100dvh - var(--headerH) - 16px);
     overflow-y: auto;
     opacity: 0;
@@ -559,7 +602,14 @@ footer {
     pointer-events: auto;
     transform: translateY(0);
   }
-  .nav .chip { width: 100%; justify-content: center; }
+  .nav .chip {
+    width: 100%;
+    min-height: 44px;
+    justify-content: flex-start;
+    padding: 0 12px;
+    font-size: 14px;
+  }
+  .nav .chip[href$="#download"] { justify-content: center; margin-top: 4px; }
 }
 
 .support-page { max-width: 900px; padding-top: 40px; }
